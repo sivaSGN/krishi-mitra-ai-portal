@@ -1,0 +1,2 @@
+import {createFileRoute} from "@tanstack/react-router";import {SavedPage} from "@/pages/saved-page";
+export const Route=createFileRoute("/saved")({head:()=>({meta:[{title:"Saved Schemes — Scheme Connect"},{name:"description",content:"Review your browser-saved agricultural schemes."},{property:"og:title",content:"Saved Schemes — Scheme Connect"},{property:"og:description",content:"Review your browser-saved agricultural schemes."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:SavedPage});
