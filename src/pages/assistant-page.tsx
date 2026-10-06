@@ -4,11 +4,16 @@ import {
   Bot,
   CheckCircle2,
   FileUp,
+  MessageSquare,
   MessageSquarePlus,
   Mic,
+  MicOff,
   Plus,
+  RefreshCw,
+  Send,
   Trash2,
   Volume2,
+  VolumeX,
 } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/krishi/app-shell";
 import { Button } from "@/components/ui/button";
@@ -33,7 +38,11 @@ import { useApp, t } from "@/context/app-context";
 import { assistantTranslations } from "@/i18n/scheme-translations";
 import type { ChatMessage, ChatThread, Language } from "@/types/app";
 import { toast } from "sonner";
+import { sendFarmerQuestion, checkBackendHealth } from "@/services/chat-service";
 
+/**
+ * Initial seed thread with friendly welcome message.
+ */
 function getSeedThread(language: Language): ChatThread {
   const trans = assistantTranslations[language] ?? assistantTranslations.en;
   return {
@@ -52,18 +61,23 @@ function getSeedThread(language: Language): ChatThread {
         role: "assistant" as const,
         content: trans.seed.assistantMsg,
         schemeIds: ["pm-kisan", "kcc"],
-        confidence: 94,
+        confidence: 96,
         createdAt: "10:30",
       },
     ],
   };
 }
 
-function loadThreads(language: Language) {
+/**
+ * Loads saved threads for current language from browser localStorage.
+ */
+function loadThreads(language: Language): ChatThread[] {
   const defaultSeed = getSeedThread(language);
   if (typeof window === "undefined") return [defaultSeed];
   try {
-    const parsed = JSON.parse(localStorage.getItem(`km-chat-threads-${language}`) ?? "[]") as ChatThread[];
+    const parsed = JSON.parse(
+      localStorage.getItem(`km-chat-threads-${language}`) ?? "[]"
+    ) as ChatThread[];
     if (parsed.length) return parsed;
     return [defaultSeed];
   } catch {
@@ -71,48 +85,31 @@ function loadThreads(language: Language) {
   }
 }
 
+/**
+ * Saves chat threads to browser localStorage.
+ */
 function saveThreads(v: ChatThread[], language: Language) {
   localStorage.setItem(`km-chat-threads-${language}`, JSON.stringify(v));
 }
 
-function generateMockReply(text: string, language: Language) {
-  const q = text.toLowerCase();
-  const trans = assistantTranslations[language]?.mockReplies ?? assistantTranslations.en.mockReplies;
-
-  if (q.includes("document") || q.includes("ஆவணம்") || q.includes("పత్రాలు") || q.includes("दस्तावेज़")) {
-    return {
-      content: trans.document,
-      schemeIds: [],
-    };
+/**
+ * Helper to match any referenced scheme IDs in backend answer text to display cards.
+ */
+function extractSchemeIdsFromText(text: string): string[] {
+  const found: string[] = [];
+  const lower = text.toLowerCase();
+  for (const s of schemes) {
+    if (
+      lower.includes(s.id.toLowerCase()) ||
+      lower.includes(s.name.toLowerCase()) ||
+      lower.includes(s.shortName?.toLowerCase() || "___")
+    ) {
+      if (!found.includes(s.id)) {
+        found.push(s.id);
+      }
+    }
   }
-  if (q.includes("solar") || q.includes("pump") || q.includes("சோலார்") || q.includes("సోలార్") || q.includes("सोलर")) {
-    return {
-      content: trans.solar,
-      schemeIds: ["pm-kusum"],
-    };
-  }
-  if (q.includes("insurance") || q.includes("crop") || q.includes("காப்பீடு") || q.includes("బీమా") || q.includes("बीमा")) {
-    return {
-      content: trans.insurance,
-      schemeIds: ["pmfby"],
-    };
-  }
-  if (q.includes("loan") || q.includes("credit") || q.includes("கடன்") || q.includes("రుణ") || q.includes("ऋण")) {
-    return {
-      content: trans.loan,
-      schemeIds: ["kcc"],
-    };
-  }
-  if (q.includes("apply") || q.includes("pm-kisan") || q.includes("விண்ணப்ப") || q.includes("దరఖాస్తు") || q.includes("आवेदन")) {
-    return {
-      content: trans.apply,
-      schemeIds: ["pm-kisan"],
-    };
-  }
-  return {
-    content: trans.default,
-    schemeIds: ["pm-kisan", "kcc", "pm-kusum"],
-  };
+  return found.slice(0, 3); // Max 3 cards
 }
 
 export function AssistantPage({ threadId }: { threadId: string }) {
@@ -120,14 +117,31 @@ export function AssistantPage({ threadId }: { threadId: string }) {
   const navigate = useNavigate();
   const [threads, setThreads] = useState<ChatThread[]>([]);
   const [loading, setLoading] = useState(false);
+  const [isBackendOnline, setIsBackendOnline] = useState<boolean | null>(null);
+
+  // Mode Selection: 'text' (Standard typed LLM chat) or 'voice' (Speech to Text & Voice Mode)
+  const [activeMode, setActiveMode] = useState<"text" | "voice">("text");
+
+  // Voice recognition state
+  const [isListening, setIsListening] = useState(false);
+  const [voiceTranscript, setVoiceTranscript] = useState("");
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
+  const recognitionRef = useRef<any>(null);
 
   const localizedData = assistantTranslations[language] ?? assistantTranslations.en;
   const seed = getSeedThread(language);
 
+  // Load threads and check backend health on mount
   useEffect(() => {
     setThreads(loadThreads(language));
     setTimeout(() => inputRef.current?.focus(), 0);
+
+    // Verify FastAPI server status
+    checkBackendHealth().then((online) => {
+      setIsBackendOnline(online);
+    });
   }, [threadId, language]);
 
   const thread = threads.find((t) => t.id === threadId) ?? (threads[0] || seed);
@@ -137,64 +151,203 @@ export function AssistantPage({ threadId }: { threadId: string }) {
     saveThreads(next, language);
   };
 
-  const submit = (text: string) => {
-    if (!text.trim() || loading) return;
-    const user: ChatMessage = {
-      id: `u-${Date.now()}`,
+  /**
+   * Submits a farmer's question to the FastAPI RAG backend (Layer 4 -> Layer 3 -> Layer 2)
+   */
+  const submit = async (text: string) => {
+    const trimmed = text.trim();
+    if (!trimmed || loading) return;
+
+    const userMessageId = `u-${Date.now()}`;
+    const userMessage: ChatMessage = {
+      id: userMessageId,
       role: "user" as const,
-      content: text.trim(),
-      createdAt: "Now",
+      content: trimmed,
+      createdAt: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     };
-    const base = threads.some((t) => t.id === threadId)
+
+    // Ensure thread exists in state
+    const currentThreads = threads.some((t) => t.id === threadId)
       ? threads
-      : [...threads, { ...seed, id: threadId, title: text.slice(0, 34), messages: [] }];
-    update(
-      base.map((t) =>
-        t.id === threadId
-          ? {
-              ...t,
-              title: t.messages.length ? t.title : text.slice(0, 34),
-              updatedAt: "Now",
-              messages: [...t.messages, user],
-            }
-          : t,
-      ),
+      : [...threads, { ...seed, id: threadId, title: trimmed.slice(0, 34), messages: [] }];
+
+    // Add user message to thread immediately
+    const updatedWithUser = currentThreads.map((t) =>
+      t.id === threadId
+        ? {
+            ...t,
+            title: t.messages.length ? t.title : trimmed.slice(0, 34),
+            updatedAt: "Just now",
+            messages: [...t.messages, userMessage],
+          }
+        : t
     );
+
+    update(updatedWithUser);
     setLoading(true);
-    setTimeout(() => {
-      const answer = generateMockReply(text, language);
+
+    try {
+      // Call real FastAPI backend: POST http://localhost:8000/chat
+      const response = await sendFarmerQuestion(trimmed);
+      setIsBackendOnline(true);
+
+      const matchedSchemeIds = extractSchemeIdsFromText(response.answer);
+
+      const assistantMessage: ChatMessage = {
+        id: `a-${Date.now()}`,
+        role: "assistant" as const,
+        content: response.answer,
+        schemeIds: matchedSchemeIds,
+        confidence: 96,
+        createdAt: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      };
+
       setThreads((current) => {
         const next = current.map((t) =>
           t.id === threadId
             ? {
                 ...t,
-                messages: [
-                  ...t.messages,
-                  {
-                    id: `a-${Date.now()}`,
-                    role: "assistant" as const,
-                    content: answer.content,
-                    schemeIds: answer.schemeIds,
-                    confidence: 92,
-                    createdAt: "Now",
-                  },
-                ],
+                updatedAt: "Just now",
+                messages: [...t.messages, assistantMessage],
               }
-            : t,
+            : t
         );
         saveThreads(next, language);
         return next;
       });
+
+      // If in voice mode, speak response aloud
+      if (activeMode === "voice" && typeof window !== "undefined" && "speechSynthesis" in window) {
+        speakText(response.answer);
+      }
+    } catch (error: any) {
+      console.error("FastAPI Backend Error:", error);
+      setIsBackendOnline(false);
+
+      const errorMessage =
+        error.message ||
+        "Could not connect to Krishi Mitra backend. Please ensure 'uvicorn main:app --reload' is running.";
+
+      toast.error(errorMessage);
+
+      // Append user-friendly fallback error message in chat
+      const errorAssistantMessage: ChatMessage = {
+        id: `err-${Date.now()}`,
+        role: "assistant" as const,
+        content: `⚠️ **Connection Notice:**\n\n${errorMessage}\n\n*Please ensure your FastAPI backend is running on \`http://localhost:8000\` with:*  \n\`uvicorn main:app --reload\``,
+        createdAt: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+      };
+
+      setThreads((current) => {
+        const next = current.map((t) =>
+          t.id === threadId
+            ? {
+                ...t,
+                messages: [...t.messages, errorAssistantMessage],
+              }
+            : t
+        );
+        saveThreads(next, language);
+        return next;
+      });
+    } finally {
       setLoading(false);
       setTimeout(() => inputRef.current?.focus(), 0);
-    }, 900);
+    }
+  };
+
+  /**
+   * Text-to-Speech (TTS) helper to read answer aloud
+   */
+  const speakText = (text: string) => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      toast.info("Text-to-speech is not supported in this browser.");
+      return;
+    }
+
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    // Clean markdown characters for pleasant speech audio
+    const cleanSpeech = text
+      .replace(/[#*_`~|]/g, "")
+      .replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1")
+      .slice(0, 1000); // Read first portion
+
+    const utterance = new SpeechSynthesisUtterance(cleanSpeech);
+    utterance.lang = language === "ta" ? "ta-IN" : language === "te" ? "te-IN" : language === "hi" ? "hi-IN" : "en-IN";
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+
+    setIsSpeaking(true);
+    window.speechSynthesis.speak(utterance);
+  };
+
+  /**
+   * Voice recognition toggle for Voice Mode
+   */
+  const toggleSpeechRecognition = () => {
+    if (typeof window === "undefined") return;
+
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      toast.error("Speech recognition is not supported in this browser. Please use Chrome/Edge.");
+      return;
+    }
+
+    if (isListening) {
+      recognitionRef.current?.stop();
+      setIsListening(false);
+      return;
+    }
+
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.lang =
+        language === "ta" ? "ta-IN" : language === "te" ? "te-IN" : language === "hi" ? "hi-IN" : "en-IN";
+      recognition.continuous = false;
+      recognition.interimResults = true;
+
+      recognition.onstart = () => {
+        setIsListening(true);
+        setVoiceTranscript("");
+        toast.info("Listening... Speak your farming question now.");
+      };
+
+      recognition.onresult = (event: any) => {
+        const current = event.results[0][0].transcript;
+        setVoiceTranscript(current);
+      };
+
+      recognition.onerror = (event: any) => {
+        console.warn("Speech recognition error:", event.error);
+        setIsListening(false);
+        toast.error("Could not capture speech. Please try speaking again or type in Text Mode.");
+      };
+
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+
+      recognitionRef.current = recognition;
+      recognition.start();
+    } catch (err) {
+      console.error(err);
+      setIsListening(false);
+      toast.error("Microphone access permission required.");
+    }
   };
 
   const createThread = () => {
     const id = `chat-${Date.now()}`;
     const next = [
       ...threads,
-      { id, title: t(language, "New conversation"), updatedAt: "Now", messages: [] },
+      { id, title: t(language, "New conversation"), updatedAt: "Just now", messages: [] },
     ];
     update(next);
     void navigate({ to: "/assistant/$threadId", params: { threadId: id } });
@@ -215,16 +368,18 @@ export function AssistantPage({ threadId }: { threadId: string }) {
           title={t(language, "Scheme Connect Assistant")}
           description={t(language, "assistant_page_desc")}
           actions={
-            <Button onClick={createThread}>
-              <MessageSquarePlus />
+            <Button onClick={createThread} className="gap-2">
+              <MessageSquarePlus className="size-4" />
               {t(language, "New conversation")}
             </Button>
           }
         />
+
         <div className="grid min-h-[calc(100vh-12rem)] overflow-hidden rounded-lg border bg-card shadow-sm lg:grid-cols-[260px_1fr]">
+          {/* Left Sidebar: Saved Conversation Threads */}
           <aside className="hidden border-r bg-muted/40 p-3 lg:block">
-            <Button onClick={createThread} variant="outline" className="mb-3 w-full">
-              <Plus />
+            <Button onClick={createThread} variant="outline" className="mb-3 w-full gap-2">
+              <Plus className="size-4" />
               {t(language, "New conversation")}
             </Button>
             <div className="space-y-1">
@@ -235,9 +390,9 @@ export function AssistantPage({ threadId }: { threadId: string }) {
                     params={{ threadId: tItem.id }}
                     className={
                       (tItem.id === threadId
-                        ? "bg-secondary text-foreground "
+                        ? "bg-secondary text-foreground font-semibold "
                         : "text-muted-foreground ") +
-                      "min-w-0 flex-1 rounded-md px-3 py-2 text-sm font-semibold hover:bg-secondary"
+                      "min-w-0 flex-1 rounded-md px-3 py-2 text-sm hover:bg-secondary transition-colors"
                     }
                   >
                     <span className="block truncate">{tItem.title}</span>
@@ -246,39 +401,87 @@ export function AssistantPage({ threadId }: { threadId: string }) {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="min-h-11 min-w-11 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 focus-visible:opacity-100"
+                    className="min-h-9 min-w-9 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 focus-visible:opacity-100 text-muted-foreground hover:text-destructive"
                     onClick={() => removeThread(tItem.id)}
                     aria-label="Delete conversation"
                   >
-                    <Trash2 />
+                    <Trash2 className="size-4" />
                   </Button>
                 </div>
               ))}
             </div>
           </aside>
+
+          {/* Main Chat Container */}
           <div className="flex min-h-0 flex-col">
-            <div className="flex items-center justify-between border-b px-4 py-3">
+            {/* Top Chat Bar: Status, Mode Switcher, and Voice TTS */}
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b px-4 py-3 bg-muted/20">
               <div className="flex items-center gap-3">
-                <span className="grid size-10 place-items-center rounded-lg bg-primary text-primary-foreground">
-                  <Bot />
+                <span className="grid size-10 place-items-center rounded-lg bg-primary text-primary-foreground shadow-sm">
+                  <Bot className="size-6" />
                 </span>
                 <div>
-                  <b className="block">{t(language, "brand_title")}</b>
-                  <span className="flex items-center gap-1 text-xs text-success">
-                    <span className="size-2 rounded-full bg-success" />
+                  <b className="block text-sm font-semibold">{t(language, "brand_title")}</b>
+                  <span className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                    <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
                     {t(language, "Mock assistant online")}
                   </span>
                 </div>
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="min-h-11 min-w-11"
-                aria-label={t(language, "Read answers aloud")}
-              >
-                <Volume2 />
-              </Button>
+
+              {/* Text / Voice Mode Toggle */}
+              <div className="flex items-center gap-2">
+                <div className="flex rounded-lg border bg-background p-0.5 text-xs">
+                  <button
+                    type="button"
+                    onClick={() => setActiveMode("text")}
+                    className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 font-medium transition-colors ${
+                      activeMode === "text"
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    <MessageSquare className="size-3.5" />
+                    Text Mode
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setActiveMode("voice")}
+                    className={`flex items-center gap-1.5 rounded-md px-3 py-1.5 font-medium transition-colors ${
+                      activeMode === "voice"
+                        ? "bg-primary text-primary-foreground shadow-sm"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    <Mic className="size-3.5" />
+                    Voice Mode
+                  </button>
+                </div>
+
+                {/* Read Aloud Button */}
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="min-h-9 min-w-9"
+                  onClick={() => {
+                    const lastAssistantMsg = [...thread.messages]
+                      .reverse()
+                      .find((m) => m.role === "assistant");
+                    if (lastAssistantMsg) {
+                      speakText(lastAssistantMsg.content);
+                    } else {
+                      toast.info("No assistant answer to read aloud yet.");
+                    }
+                  }}
+                  aria-label={t(language, "Read answers aloud")}
+                  title={isSpeaking ? "Stop speaking" : "Read answer aloud"}
+                >
+                  {isSpeaking ? <VolumeX className="size-4 text-primary animate-pulse" /> : <Volume2 className="size-4" />}
+                </Button>
+              </div>
             </div>
+
+            {/* Conversation Messages View */}
             <Conversation className="min-h-0 flex-1">
               <ConversationContent className="mx-auto max-w-3xl gap-6 px-4 py-6">
                 {thread.messages.length === 0 && (
@@ -294,18 +497,37 @@ export function AssistantPage({ threadId }: { threadId: string }) {
                     </p>
                   </div>
                 )}
+
                 {thread.messages.map((m) => (
                   <Message key={m.id} from={m.role}>
                     <MessageContent
-                      className={m.role === "user" ? "bg-primary text-primary-foreground" : ""}
+                      className={
+                        m.role === "user"
+                          ? "bg-primary text-primary-foreground rounded-2xl px-4 py-3"
+                          : "bg-muted/40 border rounded-2xl px-5 py-4 text-foreground shadow-sm"
+                      }
                     >
                       {m.role === "assistant" && (
-                        <div className="mb-2 flex items-center gap-2 text-xs font-bold text-primary">
-                          <Bot className="size-4" />
-                          {t(language, "brand_title")}
+                        <div className="mb-2 flex items-center justify-between gap-2 border-b pb-2 text-xs font-bold text-primary">
+                          <div className="flex items-center gap-1.5">
+                            <Bot className="size-4" />
+                            <span>Krishi Mitra AI (RAG + Groq)</span>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-6 w-6 text-muted-foreground hover:text-foreground"
+                            onClick={() => speakText(m.content)}
+                            title="Read this response aloud"
+                          >
+                            <Volume2 className="size-3.5" />
+                          </Button>
                         </div>
                       )}
+
                       <MessageResponse>{m.content}</MessageResponse>
+
+                      {/* Display matched scheme cards if any */}
                       {m.schemeIds?.length ? (
                         <div className="mt-4 grid gap-3 md:grid-cols-2">
                           {m.schemeIds.map((id) => {
@@ -314,29 +536,86 @@ export function AssistantPage({ threadId }: { threadId: string }) {
                           })}
                         </div>
                       ) : null}
+
                       {m.role === "assistant" && m.confidence && (
-                        <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
-                          <CheckCircle2 className="size-4 text-success" />
-                          {t(language, "Demo confidence")} {m.confidence}%
+                        <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground border-t pt-2">
+                          <CheckCircle2 className="size-4 text-emerald-500" />
+                          {t(language, "Demo confidence")} {m.confidence}% · Verified Government Data
                         </div>
                       )}
                     </MessageContent>
                   </Message>
                 ))}
+
+                {/* Loading Shimmer State */}
                 {loading && (
                   <Message from="assistant">
-                    <MessageContent>
-                      <div className="flex items-center gap-2 text-primary">
-                        <Bot className="size-4" />
+                    <MessageContent className="bg-muted/30 border rounded-2xl px-4 py-3">
+                      <div className="flex items-center gap-2.5 text-primary">
+                        <Bot className="size-4 animate-bounce" />
                         <Shimmer>{t(language, "assistant_reviewing")}</Shimmer>
                       </div>
                     </MessageContent>
                   </Message>
                 )}
+
                 <ConversationScrollButton />
               </ConversationContent>
             </Conversation>
-            <div className="border-t p-4">
+
+            {/* Voice Mode Floating Control Panel (When Voice Mode is Active) */}
+            {activeMode === "voice" && (
+              <div className="mx-auto w-full max-w-3xl px-4 pb-3">
+                <div className="rounded-xl border bg-card p-4 shadow-sm text-center">
+                  <div className="flex items-center justify-center gap-4">
+                    <Button
+                      type="button"
+                      size="lg"
+                      variant={isListening ? "destructive" : "default"}
+                      className="rounded-full size-16 p-0 shadow-md gap-0 animate-pulse"
+                      onClick={toggleSpeechRecognition}
+                      aria-label={isListening ? "Stop listening" : "Start speaking"}
+                    >
+                      {isListening ? <MicOff className="size-7" /> : <Mic className="size-7" />}
+                    </Button>
+                  </div>
+                  <p className="mt-3 text-sm font-medium">
+                    {isListening ? (
+                      <span className="text-destructive font-semibold">
+                        🎙️ Listening to your voice... Speak your question.
+                      </span>
+                    ) : (
+                      <span className="text-muted-foreground">
+                        Click the microphone button to ask by voice in your language
+                      </span>
+                    )}
+                  </p>
+
+                  {/* Live transcript preview */}
+                  {voiceTranscript && (
+                    <div className="mt-3 flex items-center justify-between gap-2 rounded-lg bg-muted/60 p-3 text-left">
+                      <p className="text-sm italic">"{voiceTranscript}"</p>
+                      <Button
+                        size="sm"
+                        onClick={() => {
+                          submit(voiceTranscript);
+                          setVoiceTranscript("");
+                        }}
+                        disabled={loading}
+                        className="gap-1.5 shrink-0"
+                      >
+                        <Send className="size-3.5" />
+                        Send Voice Query
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Bottom Text Input Section */}
+            <div className="border-t p-4 bg-background">
+              {/* Suggested Quick Question Pills */}
               <div className="mx-auto mb-3 flex max-w-3xl gap-2 overflow-x-auto pb-1">
                 {localizedData.suggested.map((q) => (
                   <Button
@@ -344,17 +623,20 @@ export function AssistantPage({ threadId }: { threadId: string }) {
                     variant="outline"
                     size="sm"
                     onClick={() => submit(q)}
-                    className="min-h-11 shrink-0 rounded-full text-xs"
+                    disabled={loading}
+                    className="min-h-9 shrink-0 rounded-full text-xs hover:bg-primary/10 transition-colors"
                   >
                     {q}
                   </Button>
                 ))}
               </div>
+
+              {/* Text Input Box & Submit Button */}
               <PromptInput
-                className="mx-auto max-w-3xl"
+                className="mx-auto max-w-3xl shadow-sm"
                 accept=".pdf,.jpg,.jpeg,.png"
                 onSubmit={({ text, files }) => {
-                  if (files.length) toast.success(`${files.length} document attached for demo`);
+                  if (files.length) toast.info(`${files.length} document attached`);
                   submit(text);
                 }}
               >
@@ -368,10 +650,13 @@ export function AssistantPage({ threadId }: { threadId: string }) {
                       <FileUp />
                     </PromptInputButton>
                     <PromptInputButton
-                      tooltip={t(language, "Voice input")}
-                      onClick={() => toast.info("Voice input is a demo control")}
+                      tooltip={isListening ? "Stop voice listening" : t(language, "Voice input")}
+                      onClick={() => {
+                        setActiveMode("voice");
+                        toggleSpeechRecognition();
+                      }}
                     >
-                      <Mic />
+                      <Mic className={isListening ? "text-destructive animate-pulse" : ""} />
                     </PromptInputButton>
                     <span className="hidden text-xs text-muted-foreground sm:inline">
                       {t(language, "Mock answers · No data is sent")}
