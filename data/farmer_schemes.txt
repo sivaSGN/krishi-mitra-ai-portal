@@ -1,0 +1,1299 @@
+Scheme ID: 1
+Scheme Name: Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Income Support
+Launch Year: 2019
+Target Beneficiaries: Eligible farmer families
+State / Region: India
+Objective: Provide income support to eligible farmer families through DBT.
+Benefits: ₹6,000 per year in three equal installments through DBT.
+Eligibility: Eligible landholding farmer families subject to exclusions and verification.
+Documents Required: Aadhaar; bank details; land records; mobile number
+Official Resource: https://pmkisan.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 2
+Scheme Name: Pradhan Mantri Kisan Maan Dhan Yojana (PM-KMY)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Pension / Social Security
+Launch Year: 2019
+Target Beneficiaries: Small and marginal farmers
+State / Region: India
+Objective: Provide pension support to small and marginal farmers in old age.
+Benefits: Minimum assured pension of ₹3,000/month after age 60, subject to conditions.
+Eligibility: Small and marginal farmers, generally joining at 18–40 years, subject to exclusions.
+Documents Required: Aadhaar; bank account; landholding details; age proof
+Official Resource: https://maandhan.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 3
+Scheme Name: Pradhan Mantri Fasal Bima Yojana (PMFBY)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Crop Insurance
+Launch Year: 2016
+Target Beneficiaries: Farmers growing notified crops
+State / Region: India
+Objective: Provide affordable crop insurance against notified crop losses.
+Benefits: Insurance cover and claim compensation for covered crop losses.
+Eligibility: Farmers growing notified crops in notified areas/seasons.
+Documents Required: Aadhaar; bank details; land/tenancy or cultivation documents; crop details
+Official Resource: https://pmfby.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 4
+Scheme Name: Restructured Weather Based Crop Insurance Scheme (RWBCIS)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Crop Insurance
+Launch Year: 2016
+Target Beneficiaries: Farmers growing notified crops
+State / Region: India
+Objective: Provide insurance protection based on adverse weather parameters.
+Benefits: Weather-index based insurance compensation for notified weather risks.
+Eligibility: Farmers cultivating notified crops in notified areas/seasons.
+Documents Required: Aadhaar; bank details; land/cultivation documents; crop details
+Official Resource: https://pmfby.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 5
+Scheme Name: Modified Interest Subvention Scheme (MISS)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Agricultural Credit
+Launch Year: 2006
+Target Beneficiaries: Farmers and eligible agricultural borrowers
+State / Region: India
+Objective: Reduce the cost of eligible short-term agricultural credit.
+Benefits: Interest subsidy on eligible short-term crop loans through participating institutions.
+Eligibility: Eligible farmers obtaining qualifying crop loans.
+Documents Required: KCC/loan documents; KYC; land/cultivation records; bank details
+Official Resource: https://www.agricoop.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 6
+Scheme Name: Kisan Credit Card (KCC) Scheme
+Ministry / Department: Ministry of Finance / Agriculture & Farmers Welfare
+Category: Agricultural Credit
+Launch Year: 1998
+Target Beneficiaries: Farmers and eligible allied-activity producers
+State / Region: India
+Objective: Provide timely and flexible credit for cultivation and allied activities.
+Benefits: Working-capital and term-credit access for agricultural needs.
+Eligibility: Eligible farmers, tenant farmers, sharecroppers and other qualifying borrowers.
+Documents Required: Aadhaar/KYC; land or cultivation proof; photographs; bank application
+Official Resource: https://www.agricoop.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 7
+Scheme Name: Agriculture Infrastructure Fund (AIF)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Infrastructure / Credit
+Launch Year: 2020
+Target Beneficiaries: Farmers, FPOs, PACS and eligible agri-entities
+State / Region: India
+Objective: Finance post-harvest and community agricultural infrastructure.
+Benefits: Interest support and credit guarantee support for eligible infrastructure projects.
+Eligibility: Eligible entities undertaking approved infrastructure projects.
+Documents Required: Project proposal; land/lease documents; KYC; bank details; DPR
+Official Resource: https://agriinfra.dac.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 8
+Scheme Name: Formation and Promotion of 10,000 Farmer Producer Organizations (FPOs)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Farmer Collectives
+Launch Year: 2020
+Target Beneficiaries: Small and marginal farmers and FPOs
+State / Region: India
+Objective: Promote FPOs to improve aggregation, bargaining power and market access.
+Benefits: Support for FPO formation, management, capacity building and business development.
+Eligibility: Eligible farmer groups/FPOs selected under scheme guidelines.
+Documents Required: Farmer/member records; registration; KYC; bank account; business plan
+Official Resource: https://sfacindia.com/
+=== SCHEME SEPARATOR ===
+Scheme ID: 9
+Scheme Name: National Bee Keeping and Honey Mission (NBHM)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Beekeeping / Horticulture
+Launch Year: 2020
+Target Beneficiaries: Beekeepers, farmers, FPOs and enterprises
+State / Region: India
+Objective: Develop scientific beekeeping and improve honey and bee-product value chains.
+Benefits: Support for bee colonies, equipment, training, processing and value-chain development.
+Eligibility: Eligible beekeepers, farmers and organizations under approved components.
+Documents Required: Aadhaar/KYC; land/enterprise details; bank account; project documents
+Official Resource: https://nbb.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 10
+Scheme Name: Namo Drone Didi
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Farm Mechanization / Drones
+Launch Year: 2023
+Target Beneficiaries: Women Self Help Groups and farmers
+State / Region: India
+Objective: Enable women SHGs to provide drone-based agricultural services.
+Benefits: Drone support, training and service opportunities for agricultural applications.
+Eligibility: Eligible women SHGs selected under implementation guidelines.
+Documents Required: SHG registration; bank details; member KYC; training/technical documents
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 11
+Scheme Name: National Mission on Natural Farming (NMNF)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Natural Farming
+Launch Year: 2024
+Target Beneficiaries: Farmers and farmer groups
+State / Region: India
+Objective: Promote chemical-free natural farming and sustainable soil management.
+Benefits: Training, handholding, natural-farming resources and cluster support.
+Eligibility: Farmers participating in approved natural-farming clusters/programmes.
+Documents Required: Aadhaar/KYC; land/cultivation details; bank account; farmer registration
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 12
+Scheme Name: Pradhan Mantri Annadata Aay Sanrakshan Abhiyan (PM-AASHA)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Price Support / Marketing
+Launch Year: 2018
+Target Beneficiaries: Farmers producing notified crops
+State / Region: India
+Objective: Support farmers through price assurance and procurement mechanisms.
+Benefits: Procurement and price-support mechanisms under applicable components.
+Eligibility: Farmers producing notified crops covered by the applicable component.
+Documents Required: Farmer registration; land/cultivation proof; crop details; bank account
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 13
+Scheme Name: Agri Fund for Start-ups & Rural Enterprises (AgriSURE)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Agri Entrepreneurship / Finance
+Launch Year: 2024
+Target Beneficiaries: Agri startups, rural enterprises and entrepreneurs
+State / Region: India
+Objective: Provide funding support to agriculture and rural enterprises/startups.
+Benefits: Fund-based financing/investment support for innovative agri and rural businesses.
+Eligibility: Eligible startups and enterprises meeting fund criteria.
+Documents Required: Business registration; KYC; business plan; financial/project documents
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 14
+Scheme Name: Per Drop More Crop (PDMC)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Micro Irrigation
+Launch Year: 2015
+Target Beneficiaries: Farmers
+State / Region: India
+Objective: Improve farm-level water-use efficiency through micro-irrigation.
+Benefits: Financial assistance for drip and sprinkler irrigation systems.
+Eligibility: Eligible farmers installing approved micro-irrigation systems.
+Documents Required: Aadhaar/KYC; land records; bank details; irrigation application/invoice
+Official Resource: https://pmksy.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 15
+Scheme Name: Sub-Mission on Agricultural Mechanization (SMAM)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Farm Mechanization
+Launch Year: 2014
+Target Beneficiaries: Farmers, FPOs, cooperatives and custom hiring centres
+State / Region: India
+Objective: Promote access to agricultural machinery and mechanization services.
+Benefits: Support/subsidy for eligible agricultural machinery and mechanization infrastructure.
+Eligibility: Farmers and eligible institutions under component guidelines.
+Documents Required: Aadhaar/KYC; land details; bank account; machinery quotation/invoice
+Official Resource: https://agrimachinery.nic.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 16
+Scheme Name: Paramparagat Krishi Vikas Yojana (PKVY)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Organic Farming
+Launch Year: 2015
+Target Beneficiaries: Farmers and farmer groups
+State / Region: India
+Objective: Promote cluster-based organic farming and certification.
+Benefits: Support for organic inputs, training, certification and cluster development.
+Eligibility: Farmers participating in approved organic farming clusters.
+Documents Required: Farmer registration; land records; group/cluster documents; bank details
+Official Resource: https://pgsindia-ncof.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 17
+Scheme Name: Soil Health & Fertility / Soil Health Card
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Soil Management
+Launch Year: 2015
+Target Beneficiaries: Farmers
+State / Region: India
+Objective: Promote balanced nutrient management using soil testing.
+Benefits: Soil testing and recommendations for appropriate fertilizer use.
+Eligibility: Farmers covered by state soil-testing/Soil Health Card activities.
+Documents Required: Farmer details; plot information; soil sample; Aadhaar/KYC where required
+Official Resource: https://soilhealth.dac.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 18
+Scheme Name: Rainfed Area Development (RAD)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Rainfed Agriculture
+Launch Year: 2014
+Target Beneficiaries: Rainfed farmers
+State / Region: India
+Objective: Improve productivity and resilience of rainfed farming through integrated systems.
+Benefits: Support for integrated farming-system activities and climate-resilient practices.
+Eligibility: Farmers in approved rainfed areas/components.
+Documents Required: Land records; farmer registration; bank details; activity documents
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 19
+Scheme Name: Sub-Mission on Agroforestry (SMAF)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Agroforestry
+Launch Year: 2016
+Target Beneficiaries: Farmers and agroforestry practitioners
+State / Region: India
+Objective: Promote tree-based farming and sustainable land use.
+Benefits: Support for planting material, nurseries and agroforestry activities.
+Eligibility: Eligible farmers/institutions under approved agroforestry activities.
+Documents Required: Land records; Aadhaar/KYC; bank details; plantation plan
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 20
+Scheme Name: Crop Diversification Programme (CDP)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Crop Diversification
+Launch Year: 2013
+Target Beneficiaries: Farmers in identified areas
+State / Region: India
+Objective: Encourage diversification from water-intensive and monocropping systems.
+Benefits: Support for alternative crops, demonstrations and diversification activities.
+Eligibility: Farmers in areas/crop systems covered by the programme.
+Documents Required: Land records; crop details; farmer registration; bank details
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 21
+Scheme Name: Sub-Mission on Agriculture Extension (SMAE)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Agricultural Extension
+Launch Year: 2014
+Target Beneficiaries: Farmers and extension beneficiaries
+State / Region: India
+Objective: Strengthen farmer access to knowledge, demonstrations and extension services.
+Benefits: Training, demonstrations, advisory and technology-transfer services.
+Eligibility: Farmers participating in approved extension programmes.
+Documents Required: Farmer registration; Aadhaar/KYC where required; programme documents
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 22
+Scheme Name: Sub-Mission on Seed and Planting Material (SMSP)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Seeds
+Launch Year: 2014
+Target Beneficiaries: Farmers and seed-related institutions
+State / Region: India
+Objective: Improve availability and quality of seed and planting material.
+Benefits: Support for quality seed systems, production and certification.
+Eligibility: Farmers and eligible seed producers/organizations under components.
+Documents Required: Farmer/KYC details; land records; bank details; activity documents
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 23
+Scheme Name: National Food Security and Nutrition Mission (NFSNM)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Crop Production
+Launch Year: 2007
+Target Beneficiaries: Farmers growing covered crops
+State / Region: India
+Objective: Increase production and productivity of major food crops.
+Benefits: Demonstrations, improved inputs, training and technology support.
+Eligibility: Farmers in covered districts and crop interventions.
+Documents Required: Farmer registration; land/crop details; Aadhaar/KYC where required
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 24
+Scheme Name: Integrated Scheme for Agricultural Marketing (ISAM)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Agricultural Marketing
+Launch Year: 2014
+Target Beneficiaries: Farmers, FPOs and eligible market entities
+State / Region: India
+Objective: Improve agricultural marketing infrastructure and efficiency.
+Benefits: Support for market infrastructure, grading, assaying and related facilities.
+Eligibility: Eligible entities and farmer-linked market infrastructure projects.
+Documents Required: Project proposal; land/lease documents; KYC; bank details; DPR
+Official Resource: https://agmarknet.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 25
+Scheme Name: Mission for Integrated Development of Horticulture (MIDH)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Horticulture
+Launch Year: 2014
+Target Beneficiaries: Horticulture farmers and eligible institutions
+State / Region: India
+Objective: Promote holistic horticulture development, productivity and post-harvest management.
+Benefits: Assistance for planting material, area expansion, protected cultivation and post-harvest activities.
+Eligibility: Eligible horticulture farmers/institutions under state plans.
+Documents Required: Aadhaar/KYC; land records; bank details; crop/project documents
+Official Resource: https://midh.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 26
+Scheme Name: National Mission on Edible Oils – Oil Palm (NMEO-OP)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Oil Palm
+Launch Year: 2021
+Target Beneficiaries: Oil-palm farmers and growers
+State / Region: India
+Objective: Increase domestic oil-palm cultivation and edible-oil production.
+Benefits: Planting material and cultivation support plus applicable price/viability assistance.
+Eligibility: Farmers in identified oil-palm areas meeting state conditions.
+Documents Required: Land records; Aadhaar/KYC; bank details; plantation registration
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 27
+Scheme Name: National Mission on Edible Oils – Oilseeds (NMEO-Oilseeds)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Oilseeds
+Launch Year: 2024
+Target Beneficiaries: Oilseed farmers
+State / Region: India
+Objective: Increase oilseed production and reduce import dependence.
+Benefits: Support for improved seed, demonstrations, technology and value-chain activities.
+Eligibility: Farmers growing/adopting covered oilseed crops in programme areas.
+Documents Required: Land/crop details; farmer registration; Aadhaar/KYC; bank details
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 28
+Scheme Name: Mission Organic Value Chain Development for North Eastern Region (MOVCDNER)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Organic Farming
+Launch Year: 2015
+Target Beneficiaries: Farmers, farmer groups and organic enterprises in NER
+State / Region: North Eastern Region
+Objective: Develop certified organic production and value chains in the North Eastern Region.
+Benefits: Support for organic production, certification, aggregation, processing and marketing.
+Eligibility: Farmers/groups in North Eastern states covered by the mission.
+Documents Required: Land records; group registration; organic certification; bank details
+Official Resource: https://pgsindia-ncof.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 29
+Scheme Name: Digital Agriculture Mission
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Digital Agriculture
+Launch Year: 2024
+Target Beneficiaries: Farmers and agriculture ecosystem participants
+State / Region: India
+Objective: Build digital public infrastructure and technology-enabled agricultural services.
+Benefits: Digital farmer identity, data-enabled services and technology infrastructure.
+Eligibility: Farmers/entities participating in approved digital agriculture services.
+Documents Required: Aadhaar/KYC where applicable; land records; mobile number; farmer registration
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 30
+Scheme Name: National Bamboo Mission (NBM)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Bamboo / Horticulture
+Launch Year: 2018
+Target Beneficiaries: Bamboo farmers and bamboo enterprises
+State / Region: India
+Objective: Increase bamboo cultivation, productivity, processing and value chains.
+Benefits: Support for planting material, plantations, nurseries and value-chain activities.
+Eligibility: Eligible farmers/entities undertaking approved bamboo activities.
+Documents Required: Land records; Aadhaar/KYC; bank details; plantation/project documents
+Official Resource: https://nbm.nic.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 31
+Scheme Name: Pradhan Mantri Krishi Sinchayee Yojana (PMKSY)
+Ministry / Department: Ministry of Jal Shakti / Ministry of Agriculture & Farmers Welfare
+Category: Irrigation
+Launch Year: 2015
+Target Beneficiaries: Farmers and irrigation beneficiaries
+State / Region: India
+Objective: Expand irrigation coverage and improve water-use efficiency.
+Benefits: Support for irrigation infrastructure and water-use efficiency under PMKSY components.
+Eligibility: Eligible beneficiaries under relevant PMKSY components/state programmes.
+Documents Required: Land records; Aadhaar/KYC; bank details; irrigation/project documents
+Official Resource: https://pmksy.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 32
+Scheme Name: Pradhan Mantri Kisan SAMPADA Yojana (PMKSY)
+Ministry / Department: Ministry of Food Processing Industries
+Category: Food Processing / Value Chain
+Launch Year: 2017
+Target Beneficiaries: Farmers, FPOs, processors and food-processing enterprises
+State / Region: India
+Objective: Develop modern food-processing infrastructure and farm-to-retail supply chains.
+Benefits: Support for cold chains, processing, preservation and agro-processing infrastructure.
+Eligibility: Eligible food-processing enterprises, FPOs and approved entities.
+Documents Required: Business registration; KYC; project report; land/lease documents; bank details
+Official Resource: https://mofpi.gov.in/en/Schemes/about-pmksy-scheme
+=== SCHEME SEPARATOR ===
+Scheme ID: 33
+Scheme Name: Pradhan Mantri Matsya Sampada Yojana (PMMSY)
+Ministry / Department: Department of Fisheries, Ministry of Fisheries, Animal Husbandry & Dairying
+Category: Fisheries / Aquaculture
+Launch Year: 2020
+Target Beneficiaries: Fishers, fish farmers, aquaculture farmers, FPOs and enterprises
+State / Region: India
+Objective: Develop sustainable fisheries and aquaculture and improve fisher/fish-farmer incomes.
+Benefits: Financial assistance for aquaculture, fisheries infrastructure, inputs, cold chain and value addition.
+Eligibility: Eligible fishers, fish farmers and fisheries entities under approved components.
+Documents Required: Aadhaar/KYC; land/lease or water-body documents; bank details; project proposal
+Official Resource: https://dof.gov.in/pmmsy
+=== SCHEME SEPARATOR ===
+Scheme ID: 34
+Scheme Name: Fisheries and Aquaculture Infrastructure Development Fund (FIDF)
+Ministry / Department: Department of Fisheries, Ministry of Fisheries, Animal Husbandry & Dairying
+Category: Fisheries Infrastructure / Credit
+Launch Year: 2018
+Target Beneficiaries: Fishers, fish farmers, entrepreneurs, cooperatives and eligible entities
+State / Region: India
+Objective: Facilitate concessional finance for fisheries and aquaculture infrastructure.
+Benefits: Interest support/concessional finance for eligible fisheries infrastructure projects.
+Eligibility: Eligible fisheries/aquaculture entities undertaking approved projects.
+Documents Required: Project report; land/lease documents; KYC; bank/loan documents
+Official Resource: https://dof.gov.in/related-links/fidf
+=== SCHEME SEPARATOR ===
+Scheme ID: 35
+Scheme Name: Rashtriya Gokul Mission (RGM)
+Ministry / Department: Department of Animal Husbandry & Dairying
+Category: Dairy / Livestock
+Launch Year: 2014
+Target Beneficiaries: Cattle and dairy farmers and eligible breeding organizations
+State / Region: India
+Objective: Conserve indigenous bovine breeds and improve productivity.
+Benefits: Breed improvement, artificial insemination and animal genetic resource support.
+Eligibility: Eligible livestock farmers/institutions under programme components.
+Documents Required: Aadhaar/KYC; livestock details; bank details; activity documents
+Official Resource: https://dahd.nic.in/schemes/programmes/rashtriya_gokul_mission
+=== SCHEME SEPARATOR ===
+Scheme ID: 36
+Scheme Name: National Livestock Mission (NLM)
+Ministry / Department: Department of Animal Husbandry & Dairying
+Category: Livestock / Entrepreneurship
+Launch Year: 2014
+Target Beneficiaries: Livestock farmers, entrepreneurs, SHGs, FPOs and organizations
+State / Region: India
+Objective: Promote livestock entrepreneurship, breed development, feed and fodder.
+Benefits: Capital subsidy/support for approved livestock, poultry and feed/fodder activities.
+Eligibility: Eligible applicants meeting component-specific conditions.
+Documents Required: Aadhaar/KYC; land/lease; bank details; project report; livestock plan
+Official Resource: https://dahd.nic.in/schemes/programmes/national-livestock-mission
+=== SCHEME SEPARATOR ===
+Scheme ID: 37
+Scheme Name: Animal Husbandry Infrastructure Development Fund (AHIDF)
+Ministry / Department: Department of Animal Husbandry & Dairying
+Category: Dairy / Animal Husbandry Infrastructure
+Launch Year: 2020
+Target Beneficiaries: Entrepreneurs, MSMEs, FPOs and eligible entities
+State / Region: India
+Objective: Facilitate investment in dairy, meat processing and animal-feed infrastructure.
+Benefits: Interest subvention and credit support for eligible infrastructure projects.
+Eligibility: Eligible entities undertaking approved animal-husbandry infrastructure projects.
+Documents Required: Project report; business registration; KYC; land/lease; bank/loan documents
+Official Resource: https://ahidf.udyamimitra.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 38
+Scheme Name: Pradhan Mantri Formalisation of Micro Food Processing Enterprises (PMFME)
+Ministry / Department: Ministry of Food Processing Industries
+Category: Food Processing / Farmer Enterprises
+Launch Year: 2020
+Target Beneficiaries: Micro food-processing units, SHGs, FPOs and cooperatives
+State / Region: India
+Objective: Support formalization and upgrading of micro food-processing enterprises.
+Benefits: Credit-linked subsidy, seed capital and branding/infrastructure support.
+Eligibility: Eligible micro food-processing units, SHGs, FPOs and cooperatives.
+Documents Required: Aadhaar/KYC; enterprise details; bank account; project report; food-processing documents
+Official Resource: https://pmfme.mofpi.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 39
+Scheme Name: National Mission for Sustainable Agriculture (NMSA)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Climate-Resilient / Sustainable Agriculture
+Launch Year: 2014
+Target Beneficiaries: Farmers in covered programme areas
+State / Region: India
+Objective: Promote sustainable and climate-resilient agriculture and resource management.
+Benefits: Support for sustainable agriculture, soil/water management and climate-resilient practices.
+Eligibility: Farmers and beneficiaries in approved NMSA components.
+Documents Required: Farmer registration; land records; Aadhaar/KYC; bank details
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 40
+Scheme Name: Market Intervention Scheme and Price Support Scheme (MIS-PSS)
+Ministry / Department: Ministry of Agriculture & Farmers Welfare
+Category: Price Support / Procurement
+Launch Year: 2018
+Target Beneficiaries: Farmers producing eligible commodities
+State / Region: India
+Objective: Provide market intervention and price support for eligible agricultural/horticultural commodities.
+Benefits: Procurement/market intervention support under notified arrangements.
+Eligibility: Farmers producing commodities covered by notified intervention/procurement.
+Documents Required: Farmer registration; cultivation proof; commodity details; bank account
+Official Resource: https://agriwelfare.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 41
+Scheme Name: Annadata Sukhibhava – PM KISAN Scheme
+Ministry / Department: Government of Andhra Pradesh – Agriculture & Cooperation Department
+Category: State Farmer Income Support
+Launch Year: 2019
+Target Beneficiaries: Small and marginal farmers; eligible tenant farmers
+State / Region: Andhra Pradesh
+Objective: Provide investment and income support to eligible farmer families.
+Benefits: Financial assistance combined with PM-KISAN support subject to applicable guidelines.
+Eligibility: Eligible farmer families/tenant farmers covered under applicable rules.
+Documents Required: Aadhaar/ID; bank account; land/cultivation records
+Official Resource: https://apagrisnet.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 42
+Scheme Name: Vaddi Leni Runalu
+Ministry / Department: Government of Andhra Pradesh – Agriculture & Cooperation Department
+Category: Agricultural Credit / Interest Support
+Launch Year: 2012
+Target Beneficiaries: Eligible farmers/eligible groups using covered loans
+State / Region: Andhra Pradesh
+Objective: Reduce interest burden on eligible agricultural credit.
+Benefits: Interest support/subvention on eligible loans.
+Eligibility: Eligible beneficiaries and qualifying loans.
+Documents Required: Aadhaar/ID; bank/loan records; farmer/group records
+Official Resource: https://apagrisnet.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 43
+Scheme Name: Rythu Seva Kendralu (RSKs)
+Ministry / Department: Government of Andhra Pradesh – Agriculture Department
+Category: Farmer Service Centre
+Launch Year: 2020
+Target Beneficiaries: Farmers and farming households
+State / Region: Andhra Pradesh
+Objective: Provide local access to agricultural inputs, advisories and government services.
+Benefits: Access to seeds, inputs, advisories and selected government services.
+Eligibility: Farmers in villages served by RSKs/RBKs.
+Documents Required: Aadhaar/Farmer ID; scheme-specific documents
+Official Resource: https://tirupati.ap.gov.in/agriculture/
+=== SCHEME SEPARATOR ===
+Scheme ID: 44
+Scheme Name: Polambadi – Farmer Field School Programme
+Ministry / Department: Government of Andhra Pradesh – Agriculture Department
+Category: Agricultural Extension / Farmer Training
+Launch Year: 2010
+Target Beneficiaries: Farmers cultivating selected crops
+State / Region: Andhra Pradesh
+Objective: Improve crop-management, pest-management and cultivation knowledge through field learning.
+Benefits: Practical training and improved production practices.
+Eligibility: Farmers participating in field-school programmes.
+Documents Required: Aadhaar/Farmer ID; land/crop details
+Official Resource: https://spsnellore.ap.gov.in/te/%E0%B0%B5%E0%B1%8D%E0%B0%AF%E0%B0%B5%E0%B0%B8%E0%B0%BE%E0%B0%AF-%E0%B0%B6%E0%B0%BE%E0%B0%96-2/
+=== SCHEME SEPARATOR ===
+Scheme ID: 45
+Scheme Name: Andhra Pradesh Community Managed Natural Farming (APCNF)
+Ministry / Department: Government of Andhra Pradesh – Agriculture Department
+Category: Natural Farming
+Launch Year: 2016
+Target Beneficiaries: Farmers adopting or transitioning to natural farming
+State / Region: Andhra Pradesh
+Objective: Promote natural farming and reduce dependence on synthetic inputs.
+Benefits: Training, community support and natural-farming practices.
+Eligibility: Farmers participating through programme villages/communities.
+Documents Required: Aadhaar/Farmer ID; land/cultivation details
+Official Resource: https://westgodavari.ap.gov.in/departments/agriculture/
+=== SCHEME SEPARATOR ===
+Scheme ID: 46
+Scheme Name: Natural Calamities / Input Subsidy
+Ministry / Department: Government of Andhra Pradesh – Agriculture & Horticulture Departments
+Category: Crop Loss Compensation
+Launch Year: 2019
+Target Beneficiaries: Farmers affected by notified calamities
+State / Region: Andhra Pradesh
+Objective: Provide input assistance after eligible notified crop losses.
+Benefits: Input subsidy/financial assistance for eligible crop losses.
+Eligibility: Eligible crop losses assessed under disaster-relief guidelines.
+Documents Required: Aadhaar; land/crop/e-Crop records; bank details
+Official Resource: https://tirupati.ap.gov.in/agriculture/
+=== SCHEME SEPARATOR ===
+Scheme ID: 47
+Scheme Name: Andhra Pradesh Micro Irrigation Project (APMIP)
+Ministry / Department: Government of Andhra Pradesh – Horticulture Department / Agriculture & Cooperation Department
+Category: Micro Irrigation / Water Management
+Launch Year: 2003
+Target Beneficiaries: Small, marginal and other eligible farmers
+State / Region: Andhra Pradesh
+Objective: Improve water-use efficiency and productivity using drip and sprinkler systems.
+Benefits: Subsidy/support for drip and sprinkler systems.
+Eligibility: AP farmers meeting land, crop and programme conditions.
+Documents Required: Aadhaar; land records; bank details; farmer registration
+Official Resource: https://tirupati.ap.gov.in/andhra-pradesh-micro-irrigation-project-apmip/
+=== SCHEME SEPARATOR ===
+Scheme ID: 48
+Scheme Name: Farm Mechanization Programme
+Ministry / Department: Government of Andhra Pradesh – Agriculture/Horticulture Departments
+Category: Farm Mechanization
+Launch Year: 2010
+Target Beneficiaries: Small/marginal farmers; eligible groups/FPOs/CHCs
+State / Region: Andhra Pradesh
+Objective: Improve farm efficiency and reduce labour requirements through machinery.
+Benefits: Subsidy/support for farm machinery and implements.
+Eligibility: Eligible farmers/groups under annual action plan.
+Documents Required: Aadhaar; land/farmer records; bank details; machinery documents
+Official Resource: https://spsnellore.ap.gov.in/horticulture-department/
+=== SCHEME SEPARATOR ===
+Scheme ID: 49
+Scheme Name: YSR Thotabadi / Horticulture Training Programme
+Ministry / Department: Government of Andhra Pradesh – Horticulture Department
+Category: Horticulture Extension / Training
+Launch Year: 2019
+Target Beneficiaries: Horticulture farmers
+State / Region: Andhra Pradesh
+Objective: Improve horticulture productivity and quality through crop-specific training.
+Benefits: Training, demonstrations and technical guidance.
+Eligibility: Farmers cultivating eligible horticultural crops.
+Documents Required: Aadhaar/Farmer ID; horticulture crop/land details
+Official Resource: https://kakinada.ap.gov.in/departments/horticulture/
+=== SCHEME SEPARATOR ===
+Scheme ID: 50
+Scheme Name: Protected Cultivation Programme – Poly Houses & Shade Net Houses
+Ministry / Department: Government of Andhra Pradesh – Horticulture Department
+Category: Protected Horticulture
+Launch Year: 2014
+Target Beneficiaries: Horticulture and vegetable farmers
+State / Region: Andhra Pradesh
+Objective: Increase yield and quality through protected cultivation.
+Benefits: Financial assistance/subsidy for polyhouses and shade-net houses.
+Eligibility: Eligible farmers meeting area, crop and infrastructure conditions.
+Documents Required: Aadhaar; land documents; bank details; project documents
+Official Resource: https://spsnellore.ap.gov.in/horticulture-department/
+=== SCHEME SEPARATOR ===
+Scheme ID: 51
+Scheme Name: Hybrid Vegetable Cultivation Programme
+Ministry / Department: Government of Andhra Pradesh – Horticulture Department
+Category: Vegetable Horticulture
+Launch Year: 2014
+Target Beneficiaries: Vegetable farmers
+State / Region: Andhra Pradesh
+Objective: Increase vegetable cultivation, productivity and income using improved hybrid cultivation.
+Benefits: Assistance for hybrid seed and cultivation inputs.
+Eligibility: Farmers cultivating eligible vegetables.
+Documents Required: Aadhaar/Farmer ID; land/crop details; bank details
+Official Resource: https://spsnellore.ap.gov.in/horticulture-department/
+=== SCHEME SEPARATOR ===
+Scheme ID: 52
+Scheme Name: Permanent Pandal Programme
+Ministry / Department: Government of Andhra Pradesh – Horticulture Department
+Category: Horticulture Infrastructure
+Launch Year: 2014
+Target Beneficiaries: Vegetable/horticulture farmers
+State / Region: Andhra Pradesh
+Objective: Support creeper/vegetable cultivation with permanent structures.
+Benefits: Financial assistance for permanent pandals/trellis.
+Eligibility: Eligible farmers cultivating suitable crops.
+Documents Required: Aadhaar; land records; bank details; crop/structure documents
+Official Resource: https://spsnellore.ap.gov.in/horticulture-department/
+=== SCHEME SEPARATOR ===
+Scheme ID: 53
+Scheme Name: Pack House Assistance Programme
+Ministry / Department: Government of Andhra Pradesh – Horticulture Department
+Category: Post-Harvest Management
+Launch Year: 2014
+Target Beneficiaries: Horticulture farmers/FPOs/producer groups
+State / Region: Andhra Pradesh
+Objective: Reduce post-harvest losses and improve grading, packing and marketing.
+Benefits: Assistance for pack houses and post-harvest facilities.
+Eligibility: Eligible farmers/groups meeting infrastructure conditions.
+Documents Required: Aadhaar; land/ownership; bank details; project documents
+Official Resource: https://spsnellore.ap.gov.in/horticulture-department/
+=== SCHEME SEPARATOR ===
+Scheme ID: 54
+Scheme Name: Oil Palm Area Expansion & Maintenance Programme
+Ministry / Department: Government of Andhra Pradesh – Horticulture Department
+Category: Oil Palm / Horticulture
+Launch Year: 2014
+Target Beneficiaries: Oil-palm farmers/new growers
+State / Region: Andhra Pradesh
+Objective: Expand oil-palm cultivation and support establishment/maintenance.
+Benefits: Plantation establishment and maintenance assistance.
+Eligibility: Farmers in eligible oil-palm areas.
+Documents Required: Aadhaar; land records; bank details; plantation registration
+Official Resource: https://westgodavari.ap.gov.in/horticulture/
+=== SCHEME SEPARATOR ===
+Scheme ID: 55
+Scheme Name: APILIP-II – Coconut Food Value Chain Development
+Ministry / Department: Government of Andhra Pradesh – Horticulture Department + JICA
+Category: Coconut / Horticulture Value Chain
+Launch Year: 2017
+Target Beneficiaries: Coconut farmers, FPOs/FPCs
+State / Region: Andhra Pradesh
+Objective: Improve coconut productivity, processing, value addition and market linkages.
+Benefits: Productivity, pack-house, value-addition and processing support.
+Eligibility: Eligible beneficiaries in APILIP-II project areas.
+Documents Required: Aadhaar; land/coconut details; FPO/FPC registration; bank details
+Official Resource: https://konaseema.ap.gov.in/horticulture-amalapuram/
+=== SCHEME SEPARATOR ===
+Scheme ID: 56
+Scheme Name: Aquaculture Power Tariff Subsidy
+Ministry / Department: Government of Andhra Pradesh – Fisheries / Energy Departments
+Category: Aquaculture / Electricity Support
+Launch Year: 2018
+Target Beneficiaries: Eligible fish and shrimp farmers
+State / Region: Andhra Pradesh
+Objective: Reduce electricity costs for eligible aquaculture operations.
+Benefits: Concessional electricity tariff/power subsidy.
+Eligibility: Registered/eligible aquaculture farmers in notified areas.
+Documents Required: Aadhaar; aqua-farm registration; land/lease; electricity details
+Official Resource: https://westgodavari.ap.gov.in/fisheries/
+=== SCHEME SEPARATOR ===
+Scheme ID: 57
+Scheme Name: YSR Matsya Sagu Badi
+Ministry / Department: Government of Andhra Pradesh – Fisheries Department
+Category: Aquaculture Training / Extension
+Launch Year: 2019
+Target Beneficiaries: Fish and shrimp farmers
+State / Region: Andhra Pradesh
+Objective: Improve aquaculture productivity and sustainability through farmer education.
+Benefits: Technical training, disease-management and water-quality guidance.
+Eligibility: Registered/eligible fish and shrimp farmers.
+Documents Required: Aadhaar/Farmer ID; aqua-farm registration; farm details
+Official Resource: https://westgodavari.ap.gov.in/fisheries/
+=== SCHEME SEPARATOR ===
+Scheme ID: 58
+Scheme Name: Livestock Loss Compensation Scheme
+Ministry / Department: Government of Andhra Pradesh – Animal Husbandry Department
+Category: Livestock / Risk Compensation
+Launch Year: 2015
+Target Beneficiaries: Eligible livestock farmers
+State / Region: Andhra Pradesh
+Objective: Provide compensation for eligible livestock deaths.
+Benefits: Compensation for eligible livestock deaths subject to conditions.
+Eligibility: Eligible livestock owners and qualifying claims.
+Documents Required: Aadhaar/ID; ownership; veterinary/death certificate; bank details
+Official Resource: https://kakinada.ap.gov.in/sample-page/animal-husbandry/
+=== SCHEME SEPARATOR ===
+Scheme ID: 59
+Scheme Name: Jagananna Paala Velluva
+Ministry / Department: Government of Andhra Pradesh – Animal Husbandry Department / DRDA
+Category: Dairy / Livestock Livelihood
+Launch Year: 2020
+Target Beneficiaries: Eligible women farmers/SHG members
+State / Region: Andhra Pradesh
+Objective: Improve dairy livelihoods through procurement/use of milch animals.
+Benefits: Milch animals/livelihood and dairy support.
+Eligibility: Eligible women beneficiaries under programme guidelines.
+Documents Required: Aadhaar; SHG/group records; bank account; beneficiary documents
+Official Resource: https://kakinada.ap.gov.in/sample-page/animal-husbandry/
+=== SCHEME SEPARATOR ===
+Scheme ID: 60
+Scheme Name: APILIP-II – Agriculture/Horticulture Livelihood Support
+Ministry / Department: Government of Andhra Pradesh – Water Resources/Agriculture/Horticulture Departments + JICA
+Category: Irrigation / Agriculture / Livelihood
+Launch Year: 2017
+Target Beneficiaries: Farmers and rural households in project areas
+State / Region: Andhra Pradesh
+Objective: Improve irrigation, agricultural/horticultural productivity and allied livelihoods.
+Benefits: Irrigation, productivity, allied-sector and value-chain support.
+Eligibility: Beneficiaries in eligible APILIP-II areas.
+Documents Required: Aadhaar; land/cultivation records; bank details; project registration
+Official Resource: https://konaseema.ap.gov.in/horticulture-amalapuram/
+=== SCHEME SEPARATOR ===
+Scheme ID: 61
+Scheme Name: Rythu Bharosa
+Ministry / Department: Government of Telangana – Agriculture & Farmers Welfare Department
+Category: Farmer Investment Support
+Launch Year: 2024
+Target Beneficiaries: Eligible Telangana farmers and eligible tenant farmers
+State / Region: Telangana
+Objective: Provide investment assistance to eligible farmers for cultivation and farm inputs.
+Benefits: Financial investment support subject to current guidelines.
+Eligibility: Eligible farmer/cultivator meeting current land/cultivation rules.
+Documents Required: Aadhaar; land records/e-Pattadar passbook; bank account
+Official Resource: https://www.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 62
+Scheme Name: Rythu Bima – Farmers Group Life Insurance Scheme
+Ministry / Department: Government of Telangana – Agriculture Department
+Category: Farmer Life Insurance
+Launch Year: 2018
+Target Beneficiaries: Eligible Telangana farmers
+State / Region: Telangana
+Objective: Provide financial security to the family of an insured farmer after death.
+Benefits: Life insurance cover to nominee subject to scheme conditions.
+Eligibility: Eligible farmers generally within notified age and land criteria.
+Documents Required: Aadhaar; farmer/land records; nominee and bank details
+Official Resource: https://agri.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 63
+Scheme Name: Rythu Vedika
+Ministry / Department: Government of Telangana – Agriculture Department
+Category: Farmer Extension & Community Service
+Launch Year: 2020
+Target Beneficiaries: Farmers and farmer groups
+State / Region: Telangana
+Objective: Provide platforms for farmer meetings, training and government-farmer interaction.
+Benefits: Training, advisories, meetings and government information/services.
+Eligibility: Farmers/farmer groups using Rythu Vedika centres.
+Documents Required: Aadhaar/Farmer ID where required; programme registration
+Official Resource: https://agri.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 64
+Scheme Name: Farm Mechanization Scheme
+Ministry / Department: Government of Telangana – Agriculture Department
+Category: Farm Mechanization
+Launch Year: 2014
+Target Beneficiaries: Small/marginal farmers; groups/CHCs
+State / Region: Telangana
+Objective: Reduce cultivation costs and labour through machinery access.
+Benefits: Subsidy/assistance for farm machinery and implements.
+Eligibility: Eligible farmers/groups under annual programme.
+Documents Required: Aadhaar; land/farmer records; bank details; machinery quotation
+Official Resource: https://agri.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 65
+Scheme Name: Vaddi Leni Runalu / Pavala Vaddi
+Ministry / Department: Government of Telangana – Agriculture Department
+Category: Agricultural Credit / Interest Support
+Launch Year: 2014
+Target Beneficiaries: Eligible farmers/borrowers
+State / Region: Telangana
+Objective: Reduce interest burden on eligible agricultural loans.
+Benefits: Interest support/subvention on qualifying loans.
+Eligibility: Eligible agricultural loans and repayment conditions.
+Documents Required: Aadhaar; loan documents; bank records; land details
+Official Resource: https://agri.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 66
+Scheme Name: Crop Insurance / PMFBY implementation in Telangana
+Ministry / Department: Government of Telangana – Agriculture Department + Government of India
+Category: Crop Insurance
+Launch Year: 2024
+Target Beneficiaries: Eligible farmers cultivating notified crops/areas
+State / Region: Telangana
+Objective: Protect farmers against specified crop risks and natural calamities.
+Benefits: Crop insurance coverage under applicable season/policy.
+Eligibility: Notified crops/areas and enrolment conditions.
+Documents Required: Aadhaar; land/cultivation; bank; crop details
+Official Resource: https://agri.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 67
+Scheme Name: Natural Calamities / Input Subsidy
+Ministry / Department: Government of Telangana – Agriculture Department
+Category: Crop Loss Compensation
+Launch Year: —
+Target Beneficiaries: Farmers with eligible notified crop losses
+State / Region: Telangana
+Objective: Provide input assistance after eligible crop losses.
+Benefits: Input subsidy/financial assistance based on assessed damage.
+Eligibility: Crop loss assessed under applicable disaster guidelines.
+Documents Required: Aadhaar; land; crop booking/loss assessment; bank details
+Official Resource: https://agri.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 68
+Scheme Name: Strengthening of Seed Chain
+Ministry / Department: Government of Telangana – Agriculture Department
+Category: Seed Production
+Launch Year: —
+Target Beneficiaries: Seed growers/farmers/groups
+State / Region: Telangana
+Objective: Improve production and availability of quality seed.
+Benefits: Technical support and quality seed production assistance.
+Eligibility: Selected seed growers/groups under programme guidelines.
+Documents Required: Aadhaar; land records; farmer registration; seed details
+Official Resource: https://agri.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 69
+Scheme Name: Seed Village Programme / Supply of Seeds to Farmers
+Ministry / Department: Government of Telangana – Agriculture Department
+Category: Seed Distribution & Production
+Launch Year: —
+Target Beneficiaries: Farmers and seed growers
+State / Region: Telangana
+Objective: Improve timely availability of quality seed.
+Benefits: Quality seed supply and seed-production support.
+Eligibility: Farmers eligible under notified seed programmes.
+Documents Required: Aadhaar; farmer registration; land/crop details
+Official Resource: https://agri.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 70
+Scheme Name: Soil Health Card Scheme
+Ministry / Department: Government of Telangana – Agriculture Department + Government of India
+Category: Soil Health Management
+Launch Year: 2015
+Target Beneficiaries: Farmers across Telangana
+State / Region: Telangana
+Objective: Assess soil fertility and provide nutrient-management recommendations.
+Benefits: Soil testing and Soil Health Cards.
+Eligibility: Farmers with agricultural land eligible for testing.
+Documents Required: Aadhaar/Farmer ID; land/survey details; soil sample
+Official Resource: https://agri.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 71
+Scheme Name: ATMA – Agricultural Technology Management Agency
+Ministry / Department: Government of Telangana – Agriculture Department
+Category: Agricultural Extension & Training
+Launch Year: 2005
+Target Beneficiaries: Farmers, groups and extension participants
+State / Region: Telangana
+Objective: Improve farmer knowledge through training, demonstrations and exposure.
+Benefits: Training, demonstrations and technical advisories.
+Eligibility: Farmers participating through district/block ATMA programmes.
+Documents Required: Aadhaar/Farmer ID; farmer/group registration
+Official Resource: https://agri.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 72
+Scheme Name: Telangana State Micro Irrigation Project (TGMIP)
+Ministry / Department: Telangana Horticulture Department + PMKSY
+Category: Micro Irrigation / Water Management
+Launch Year: 2014
+Target Beneficiaries: Agriculture and horticulture farmers
+State / Region: Telangana
+Objective: Improve water-use efficiency through drip and sprinkler irrigation.
+Benefits: Subsidy for drip/sprinkler systems.
+Eligibility: Farmers with eligible land/crops under current rules.
+Documents Required: Aadhaar; land document; bank proof; farmer registration
+Official Resource: https://horticulturedept.telangana.gov.in/horticulturetelangana/MIP_NewFAQ.aspx
+=== SCHEME SEPARATOR ===
+Scheme ID: 73
+Scheme Name: Mission for Integrated Development of Horticulture (MIDH)
+Ministry / Department: Telangana Horticulture Department + Government of India
+Category: Horticulture Development
+Launch Year: 2014
+Target Beneficiaries: Horticulture farmers/groups/entrepreneurs
+State / Region: Telangana
+Objective: Promote horticultural crops, productivity and infrastructure.
+Benefits: Assistance for new gardens and horticulture infrastructure.
+Eligibility: Eligible horticulture beneficiaries meeting component requirements.
+Documents Required: Aadhaar; land; bank details; project/crop details
+Official Resource: https://horticulture.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 74
+Scheme Name: Oil Palm Area Expansion Programme – NMEO-OP
+Ministry / Department: Telangana Horticulture Department + Government of India
+Category: Oil Palm / Horticulture
+Launch Year: 2021
+Target Beneficiaries: Farmers in suitable oil-palm areas
+State / Region: Telangana
+Objective: Expand oil-palm cultivation and support establishment/maintenance.
+Benefits: Planting material, maintenance/intercropping and irrigation support.
+Eligibility: Farmers with suitable land/water in identified areas.
+Documents Required: Aadhaar; land records; bank details; plantation registration
+Official Resource: https://horticulture.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 75
+Scheme Name: RKVY – Horticulture Development
+Ministry / Department: Telangana Horticulture Department + Government of India
+Category: Horticulture Development
+Launch Year: 2007
+Target Beneficiaries: Horticulture farmers/groups
+State / Region: Telangana
+Objective: Increase horticultural production, productivity and income.
+Benefits: Assistance for approved horticulture components/projects.
+Eligibility: Component-specific eligibility and departmental selection.
+Documents Required: Aadhaar; land; bank details; crop/project documents
+Official Resource: https://horticulture.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 76
+Scheme Name: Sheep Distribution / Sheep Development Programme (SRDP)
+Ministry / Department: Government of Telangana – Animal Husbandry Department
+Category: Sheep & Goat Development
+Launch Year: 2017
+Target Beneficiaries: Eligible shepherds and cooperative members
+State / Region: Telangana
+Objective: Improve sheep rearing, flock size and shepherd livelihoods.
+Benefits: Sheep units, subsidy and veterinary/technical support.
+Eligibility: Eligible shepherd/cooperative beneficiaries.
+Documents Required: Aadhaar; community/cooperative records; bank details
+Official Resource: https://ahddf.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 77
+Scheme Name: Milch Animals Scheme / Dairy Development Support
+Ministry / Department: Government of Telangana – Animal Husbandry & Dairy Development Department
+Category: Dairy / Livestock
+Launch Year: —
+Target Beneficiaries: Eligible dairy farmers/milk producers
+State / Region: Telangana
+Objective: Improve milk production and dairy income.
+Benefits: Assistance for productive milch animals and dairy support.
+Eligibility: Eligible beneficiaries selected under departmental programme.
+Documents Required: Aadhaar; bank; dairy/farmer records
+Official Resource: https://ahddf.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 78
+Scheme Name: Fodder Development & Fodder Banks
+Ministry / Department: Government of Telangana – Animal Husbandry Department
+Category: Livestock / Fodder
+Launch Year: —
+Target Beneficiaries: Dairy farmers and livestock owners
+State / Region: Telangana
+Objective: Improve availability of quality fodder for livestock.
+Benefits: Fodder cultivation/resources and feed support.
+Eligibility: Livestock farmers participating in fodder programmes.
+Documents Required: Aadhaar/Farmer ID; livestock and land details
+Official Resource: https://ahddf.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 79
+Scheme Name: Aquaculture Development / NFDB Assistance
+Ministry / Department: Telangana Fisheries Department + NFDB/Government of India
+Category: Fisheries / Aquaculture
+Launch Year: —
+Target Beneficiaries: Fish/prawn farmers and aquaculture entrepreneurs
+State / Region: Telangana
+Objective: Develop fish and prawn aquaculture through pond and input support.
+Benefits: Assistance for pond renovation and aquaculture inputs.
+Eligibility: Eligible fish/prawn farmers with suitable ponds/land.
+Documents Required: Aadhaar; land/lease; pond registration; bank details
+Official Resource: https://fisheries.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 80
+Scheme Name: Fisheries Infrastructure & Fish Farmer Support Programme
+Ministry / Department: Telangana Fisheries Department
+Category: Fisheries / Fish Farming
+Launch Year: —
+Target Beneficiaries: Fish farmers and fisheries cooperatives
+State / Region: Telangana
+Objective: Improve fish production, infrastructure and farmer livelihoods.
+Benefits: Support for fisheries infrastructure, inputs, training and aquaculture.
+Eligibility: Component-specific fisheries beneficiary eligibility.
+Documents Required: Aadhaar; pond/farm details; cooperative records; bank details
+Official Resource: https://fisheries.telangana.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 81
+Scheme Name: Chief Minister’s Uzhavar Pathukappu Thittam (CMUPT)
+Ministry / Department: Government of Tamil Nadu – Revenue and Disaster Management Department
+Category: Farmer Social Security
+Launch Year: 2011
+Target Beneficiaries: Agricultural labourers; small/marginal farmers; cultivating tenants; eligible dependants
+State / Region: Tamil Nadu
+Objective: Improve social security and economic well-being of agricultural workers, small/marginal farmers and cultivating tenants.
+Benefits: Educational, marriage, death/funeral, accident and other welfare assistance under scheme rules.
+Eligibility: Eligible agricultural workers/small and marginal farmers; cultivating tenants; age and land limits apply.
+Documents Required: Aadhaar/identity; land/tenancy; family/dependent details; bank/post-office details
+Official Resource: https://www.cra.tn.gov.in/cm_uzhavar.php
+=== SCHEME SEPARATOR ===
+Scheme ID: 82
+Scheme Name: Interest Subsidy on Crop Loans through Cooperative Institutions
+Ministry / Department: Government of Tamil Nadu – Cooperation/Farmers Welfare Departments
+Category: Agricultural Credit / Interest Support
+Launch Year: —
+Target Beneficiaries: Farmers with eligible cooperative crop loans
+State / Region: Tamil Nadu
+Objective: Reduce effective interest burden on eligible crop loans through cooperatives.
+Benefits: Interest subsidy/reduced interest according to current guidelines.
+Eligibility: Eligible farmers with qualifying crop loans and applicable repayment conditions.
+Documents Required: Aadhaar; loan documents; land/cultivation; cooperative account details
+Official Resource: https://www.tn.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 83
+Scheme Name: Pradhan Mantri Fasal Bima Yojana (PMFBY) – Tamil Nadu
+Ministry / Department: Government of Tamil Nadu – Agriculture/Farmers Welfare Department + Government of India
+Category: Crop Insurance
+Launch Year: 2016
+Target Beneficiaries: Eligible farmers cultivating notified crops/areas
+State / Region: Tamil Nadu
+Objective: Protect farmers from specified crop risks and natural calamities.
+Benefits: Insurance coverage subject to season, crop, area and policy conditions.
+Eligibility: Notified crop/area and enrolment conditions.
+Documents Required: Aadhaar; land/cultivation; bank account; crop/insurance details
+Official Resource: https://pmfby.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 84
+Scheme Name: Kalaignarin All Village Integrated Agricultural Development Programme (KAVIADP)
+Ministry / Department: Government of Tamil Nadu – Agriculture & Farmers Welfare Department
+Category: Integrated Village Agriculture Development
+Launch Year: 2021
+Target Beneficiaries: Farmers and agricultural households in selected villages
+State / Region: Tamil Nadu
+Objective: Develop agriculture in selected villages through integrated interventions and improve farmer livelihoods.
+Benefits: Farm inputs and land/water, horticulture and allied agricultural support based on village plans.
+Eligibility: Farmers/households in selected villages meeting component conditions.
+Documents Required: Aadhaar; farmer registration; land/cultivation; bank details
+Official Resource: https://www.tnhorticulture.tn.gov.in/scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 85
+Scheme Name: Chief Minister’s Mannuyir Kaathu Mannuyir Kaappom Scheme (CM-MKMKS)
+Ministry / Department: Government of Tamil Nadu – Agriculture & Farmers Welfare Department
+Category: Soil Health / Sustainable Agriculture
+Launch Year: 2024
+Target Beneficiaries: Farmers and programme participants
+State / Region: Tamil Nadu
+Objective: Protect and improve soil health and promote sustainable nutrient management.
+Benefits: Soil-health activities, demonstrations and approved inputs/support.
+Eligibility: Eligibility varies by notified component, crop and location.
+Documents Required: Aadhaar/Farmer ID; land/crop details; registration
+Official Resource: https://www.tnhorticulture.tn.gov.in/scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 86
+Scheme Name: State Horticulture Development Scheme (SHDS)
+Ministry / Department: Tamil Nadu Department of Horticulture and Plantation Crops
+Category: Horticulture Development
+Launch Year: —
+Target Beneficiaries: Horticulture farmers and farmer groups
+State / Region: Tamil Nadu
+Objective: Promote horticultural crops, productivity, diversification and farmer income.
+Benefits: Assistance for planting material, crop development and approved infrastructure.
+Eligibility: Eligible farmers meeting crop, area and component requirements.
+Documents Required: Aadhaar; land ownership/lease; bank details; crop/project details
+Official Resource: https://www.tnhorticulture.tn.gov.in/scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 87
+Scheme Name: Per Drop More Crop (PDMC) / Micro Irrigation
+Ministry / Department: Tamil Nadu Horticulture Department + Government of India
+Category: Micro Irrigation / Water Management
+Launch Year: 2015
+Target Beneficiaries: Agriculture and horticulture farmers
+State / Region: Tamil Nadu
+Objective: Improve water-use efficiency through drip and sprinkler irrigation.
+Benefits: Financial assistance/subsidy for drip and sprinkler systems.
+Eligibility: Eligible farmers with suitable land and notified crops.
+Documents Required: Aadhaar; land records; bank account; farmer registration; crop details
+Official Resource: https://www.tnhorticulture.tn.gov.in/current-scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 88
+Scheme Name: National Horticulture Mission (NHM) / MIDH
+Ministry / Department: Tamil Nadu Department of Horticulture and Plantation Crops + Government of India
+Category: Horticulture Development
+Launch Year: 2005
+Target Beneficiaries: Horticulture farmers, groups and eligible entrepreneurs
+State / Region: Tamil Nadu
+Objective: Increase horticulture area, production/productivity and strengthen post-harvest/value-chain infrastructure.
+Benefits: Assistance for new gardens, planting material, protected cultivation and post-harvest components.
+Eligibility: Component-specific crop, area, land and beneficiary requirements.
+Documents Required: Aadhaar; land ownership/lease; bank details; project/crop proposal
+Official Resource: https://www.tnhorticulture.tn.gov.in/scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 89
+Scheme Name: Paramparagat Krishi Vikas Yojana (PKVY)
+Ministry / Department: Tamil Nadu Department of Horticulture and Plantation Crops + Government of India
+Category: Organic / Natural Farming
+Launch Year: 2015
+Target Beneficiaries: Farmers in eligible organic-farming clusters/groups
+State / Region: Tamil Nadu
+Objective: Promote cluster-based organic farming and sustainable agriculture.
+Benefits: Support for organic inputs, training and certification.
+Eligibility: Farmers in approved clusters meeting programme conditions.
+Documents Required: Aadhaar/Farmer ID; land/cultivation; cluster/group registration; bank details
+Official Resource: https://tnhorticulture.tn.gov.in/current-scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 90
+Scheme Name: National Mission on Natural Farming (NMNF)
+Ministry / Department: Tamil Nadu Department of Horticulture and Plantation Crops + Government of India
+Category: Natural Farming
+Launch Year: 2024
+Target Beneficiaries: Farmers adopting or transitioning to natural farming
+State / Region: Tamil Nadu
+Objective: Promote adoption of natural farming practices through training and demonstrations.
+Benefits: Training, demonstrations and technical/input support.
+Eligibility: Farmers in approved areas/clusters participating in programme.
+Documents Required: Aadhaar/Farmer ID; land/crop details; registration
+Official Resource: https://tnhorticulture.tn.gov.in/current-scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 91
+Scheme Name: PM-Rashtriya Krishi Vikas Yojana (PM-RKVY) – Horticulture Components
+Ministry / Department: Tamil Nadu Agriculture/Horticulture Departments + Government of India
+Category: Agriculture & Horticulture Development
+Launch Year: 2007
+Target Beneficiaries: Farmers, groups and eligible beneficiaries
+State / Region: Tamil Nadu
+Objective: Support projects improving productivity, infrastructure, diversification and farmer income.
+Benefits: Assistance for approved agriculture/horticulture projects and infrastructure.
+Eligibility: Eligibility varies by approved component/project.
+Documents Required: Aadhaar; land/crop; bank; project/application documents
+Official Resource: https://www.tnhorticulture.tn.gov.in/current-scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 92
+Scheme Name: National Mission on Edible Oils – Oil Palm (NMEO-OP)
+Ministry / Department: Tamil Nadu Horticulture Department + Government of India
+Category: Oil Palm / Plantation Crops
+Launch Year: 2021
+Target Beneficiaries: Farmers in suitable/notified oil-palm areas
+State / Region: Tamil Nadu
+Objective: Expand oil-palm cultivation and support plantation establishment/maintenance.
+Benefits: Planting material, establishment, maintenance/intercropping support.
+Eligibility: Farmers with suitable land/water in identified areas.
+Documents Required: Aadhaar; land records; bank details; plantation registration
+Official Resource: https://www.tnhorticulture.tn.gov.in/current-scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 93
+Scheme Name: Agroforestry Programme
+Ministry / Department: Tamil Nadu Department of Horticulture and Plantation Crops + Government of India/State
+Category: Agroforestry / Farm Diversification
+Launch Year: —
+Target Beneficiaries: Farmers adopting eligible agroforestry models
+State / Region: Tamil Nadu
+Objective: Promote tree-based farming and diversification for productivity and long-term income.
+Benefits: Planting material and approved agroforestry support.
+Eligibility: Farmers with eligible land and approved agroforestry activity.
+Documents Required: Aadhaar; land records; bank details; farmer/plantation registration
+Official Resource: https://www.tnhorticulture.tn.gov.in/current-scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 94
+Scheme Name: National Bamboo Mission (NBM)
+Ministry / Department: Tamil Nadu Department of Horticulture and Plantation Crops + Government of India
+Category: Bamboo / Horticulture
+Launch Year: 2018
+Target Beneficiaries: Farmers and eligible bamboo growers/groups
+State / Region: Tamil Nadu
+Objective: Promote bamboo cultivation, productivity and value-chain development.
+Benefits: Assistance for bamboo planting, planting material and approved value-chain activities.
+Eligibility: Eligible beneficiaries with suitable land and approved bamboo activities.
+Documents Required: Aadhaar; land ownership/lease; bank details; plantation/project documents
+Official Resource: https://www.tnhorticulture.tn.gov.in/current-scheme-gos
+=== SCHEME SEPARATOR ===
+Scheme ID: 95
+Scheme Name: Agricultural Mechanization / Farm Machinery Assistance
+Ministry / Department: Government of Tamil Nadu – Agriculture & Farmers Welfare Department
+Category: Farm Mechanization
+Launch Year: —
+Target Beneficiaries: Small/marginal farmers, other farmers, groups and CHCs
+State / Region: Tamil Nadu
+Objective: Improve farm efficiency and reduce labour costs through machinery access.
+Benefits: Subsidy/assistance for eligible agricultural machinery and implements.
+Eligibility: Eligible farmers/groups under applicable annual programme.
+Documents Required: Aadhaar; farmer/land records; bank details; machinery quotation
+Official Resource: https://www.tn.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 96
+Scheme Name: National Livestock Mission (NLM) – Entrepreneurial Development Programme
+Ministry / Department: Tamil Nadu Livestock Development Agency + Government of India
+Category: Livestock Entrepreneurship
+Launch Year: 2014
+Target Beneficiaries: Eligible livestock farmers, entrepreneurs and groups
+State / Region: Tamil Nadu
+Objective: Promote entrepreneurship in sheep/goat, piggery, poultry and fodder enterprises.
+Benefits: Capital subsidy/financial assistance for approved livestock/fodder enterprises.
+Eligibility: Enterprise-specific land, infrastructure, finance and project requirements.
+Documents Required: Aadhaar; land/lease; bank details; DPR/project report; enterprise records
+Official Resource: https://www.tnlda.tn.gov.in/national_livestock_mission
+=== SCHEME SEPARATOR ===
+Scheme ID: 97
+Scheme Name: Livestock Insurance Programme
+Ministry / Department: Tamil Nadu Livestock Development Agency / Animal Husbandry Department
+Category: Livestock Risk Management
+Launch Year: —
+Target Beneficiaries: Eligible livestock owners/dairy farmers
+State / Region: Tamil Nadu
+Objective: Protect livestock owners against financial loss from death of insured animals.
+Benefits: Insurance cover for eligible livestock subject to policy conditions.
+Eligibility: Eligible animals/owners meeting identification, valuation and insurance conditions.
+Documents Required: Aadhaar/ID; animal tag; ownership; veterinary certificate; insurance documents
+Official Resource: https://www.tnlda.tn.gov.in/national_livestock_mission
+=== SCHEME SEPARATOR ===
+Scheme ID: 98
+Scheme Name: National Fishermen Savings-cum-Relief Scheme
+Ministry / Department: Tamil Nadu Department of Fisheries and Fishermen Welfare + Government of India
+Category: Fisheries / Fishermen Welfare
+Launch Year: —
+Target Beneficiaries: Eligible marine fishermen registered with fisheries/cooperative systems
+State / Region: Tamil Nadu
+Objective: Provide savings-linked relief to eligible marine fishermen during lean/ban periods.
+Benefits: Relief assistance during eligible periods based on savings and scheme conditions.
+Eligibility: Eligible registered marine fishermen meeting programme conditions.
+Documents Required: Aadhaar; photo; Smart Ration Card; bank passbook; Fishermen Cooperative Society passbook; address proof
+Official Resource: https://www.tnesevai.tn.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 99
+Scheme Name: Relief Assistance to Marine Fishermen Families during Fishing Ban Period
+Ministry / Department: Tamil Nadu Department of Fisheries and Fishermen Welfare
+Category: Fisheries / Seasonal Relief
+Launch Year: —
+Target Beneficiaries: Eligible marine fishermen families
+State / Region: Tamil Nadu
+Objective: Provide financial relief to eligible marine fishing families during annual fishing-ban period.
+Benefits: Financial relief during notified fishing-ban period.
+Eligibility: Eligible registered marine fishing families meeting current conditions.
+Documents Required: Aadhaar; Smart Ration Card; bank passbook; cooperative records; address proof
+Official Resource: https://www.tnesevai.tn.gov.in/
+=== SCHEME SEPARATOR ===
+Scheme ID: 100
+Scheme Name: Special Allowance to Marine Fishermen Families during Fishing Lean Period
+Ministry / Department: Tamil Nadu Department of Fisheries and Fishermen Welfare
+Category: Fisheries / Seasonal Relief
+Launch Year: —
+Target Beneficiaries: Eligible marine fishermen families
+State / Region: Tamil Nadu
+Objective: Provide financial support to eligible marine fishermen families during fishing lean period.
+Benefits: Special allowance during notified lean period.
+Eligibility: Eligible registered marine fishing families satisfying current conditions.
+Documents Required: Aadhaar; Smart Ration Card; bank passbook; cooperative records; address proof
+Official Resource: https://www.tnesevai.tn.gov.in/
