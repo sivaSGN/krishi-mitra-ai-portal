@@ -251,7 +251,7 @@ def main():
     # Test Suite of representative farmer questions
     test_queries = [
         # Query 1: Paddy crop assistance
-        "I want a scheme for paddy crop",
+        "how much amount can PM-KISAN offer",
         # Query 2: Crop damage / disaster compensation
         "My crops were damaged by heavy rain and flood, how to get compensation?",
         # Query 3: Drip irrigation subsidy
