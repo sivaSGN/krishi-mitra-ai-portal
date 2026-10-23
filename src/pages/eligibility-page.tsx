@@ -9,15 +9,40 @@ import {
   RotateCcw,
   ShieldCheck,
   XCircle,
+  UserRound,
+  Sparkles,
+  ChevronDown,
+  User,
+  Calendar,
+  MapPin,
+  Sprout,
+  Droplets,
+  Layers,
+  IndianRupee,
+  BadgeCheck,
+  Landmark,
+  FileCheck2,
 } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/krishi/app-shell";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { StatusBadge } from "@/components/krishi/scheme-card";
-import { defaultProfile, schemes } from "@/data/schemes";
+import { schemes } from "@/data/schemes";
 import { useApp, t } from "@/context/app-context";
 import { getLocalizedScheme } from "@/i18n/scheme-translations";
 import type { FarmerProfile, Language } from "@/types/app";
+import {
+  STATE_DISTRICTS,
+  AGE_OPTIONS,
+  FARMER_TYPE_OPTIONS,
+  CROP_OPTIONS,
+  EXPERIENCE_OPTIONS,
+  IRRIGATION_OPTIONS,
+  OWNERSHIP_OPTIONS,
+  LAND_SIZE_OPTIONS,
+  LAND_LOCATION_OPTIONS,
+  INCOME_OPTIONS,
+} from "@/pages/profile-page";
 
 const stepsKeys = [
   "Personal Information",
@@ -27,37 +52,150 @@ const stepsKeys = [
   "Eligibility Result",
 ];
 
-const fields: [keyof FarmerProfile, string][][] = [
-  [
-    ["name", "Name"],
-    ["age", "Age"],
-    ["gender", "Gender"],
-    ["state", "State"],
-    ["district", "District"],
-  ],
-  [
-    ["farmerType", "Farmer Type"],
-    ["crop", "Crop Type"],
-    ["experience", "Farming Experience"],
-    ["irrigation", "Irrigation Type"],
-  ],
-  [
-    ["ownership", "Land Ownership"],
-    ["landSize", "Land Size"],
-    ["landLocation", "Land Location"],
-  ],
-  [["income", "Annual Income"]],
-];
+// Helper: Custom Dropdown Field
+function FarmerSelectField({
+  label,
+  value,
+  options,
+  onChange,
+  icon: Icon,
+  helperText,
+}: {
+  label: string;
+  value: string;
+  options: { value: string; label: string }[];
+  onChange: (val: string) => void;
+  icon?: any;
+  helperText?: string;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <label className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
+        {Icon && <Icon className="size-4 text-primary shrink-0" />}
+        {label}
+      </label>
+
+      {/* Main Select Dropdown */}
+      <div className="relative">
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="h-11 w-full appearance-none rounded-xl border bg-background px-3.5 pr-10 text-sm font-medium outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer shadow-sm"
+        >
+          <option value="">{`-- Select ${label} --`}</option>
+          {!options.some((opt) => opt.value === value) && value && (
+            <option value={value}>{value}</option>
+          )}
+          {options.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+        <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
+      </div>
+
+      {helperText && (
+        <p className="text-[11px] text-muted-foreground">{helperText}</p>
+      )}
+    </div>
+  );
+}
+
+// Helper: Tap-to-Select Button Cards (e.g. for Gender)
+function FarmerButtonCards({
+  label,
+  value,
+  options,
+  onChange,
+  icon: Icon,
+}: {
+  label: string;
+  value: string;
+  options: { value: string; label: string; icon?: any }[];
+  onChange: (val: string) => void;
+  icon?: any;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <label className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
+        {Icon && <Icon className="size-4 text-primary shrink-0" />}
+        {label}
+      </label>
+      <div className="grid grid-cols-3 gap-2">
+        {options.map((opt) => {
+          const isSelected = value === opt.value;
+          const OptIcon = opt.icon;
+          return (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => onChange(opt.value)}
+              className={`flex items-center justify-center gap-2 rounded-xl border h-11 px-3 text-center transition-all cursor-pointer ${
+                isSelected
+                  ? "border-primary bg-primary/10 text-primary font-bold shadow-sm ring-1 ring-primary/30"
+                  : "border-border/70 bg-card hover:border-primary/40 text-foreground font-medium"
+              }`}
+            >
+              {OptIcon ? (
+                <OptIcon className="size-4 shrink-0 text-primary" />
+              ) : isSelected ? (
+                <Check className="size-4 shrink-0 text-primary" />
+              ) : null}
+              <span className="text-xs leading-tight truncate">{opt.label}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export function EligibilityPage() {
-  const { language } = useApp();
+  const { language, profile } = useApp();
   const [step, setStep] = useState(0);
-  const [form, setForm] = useState<FarmerProfile>(defaultProfile);
 
-  const update = (k: keyof FarmerProfile, v: string | boolean) =>
-    setForm((p) => ({ ...p, [k]: v }));
+  // Initialize form state from the user's own profile — never inject demo defaults
+  const [form, setForm] = useState<FarmerProfile>(() => ({
+    name: profile.name || "",
+    age: profile.age || "",
+    gender: profile.gender || "",
+    state: profile.state || "",
+    district: profile.district || "",
+    farmerType: profile.farmerType || "",
+    crop: profile.crop || "",
+    experience: profile.experience || "",
+    irrigation: profile.irrigation || "",
+    ownership: profile.ownership || "",
+    landSize: profile.landSize || "",
+    landLocation: profile.landLocation || "",
+    income: profile.income || "",
+    aadhaar: profile.aadhaar ?? false,
+    bank: profile.bank ?? false,
+    landDocument: profile.landDocument ?? false,
+  }));
+
+  const update = (k: keyof FarmerProfile, v: string | boolean) => {
+    setForm((p) => {
+      const updated = { ...p, [k]: v };
+      // When state changes, auto-select first district of that state
+      if (k === "state" && typeof v === "string") {
+        const availableDistricts = STATE_DISTRICTS[v] || [];
+        if (availableDistricts.length > 0 && !availableDistricts.includes(p.district)) {
+          updated.district = availableDistricts[0]!;
+        }
+      }
+      return updated;
+    });
+  };
 
   if (step === 4) return <Results restart={() => setStep(0)} />;
+
+  // Available districts for current selected state
+  const stateDistricts = STATE_DISTRICTS[form.state] || [
+    "Guntur", "Krishna", "Kurnool", "East Godavari", "Warangal", "Nalgonda"
+  ];
+  const districtOptions = stateDistricts.map((d) => ({ value: d, label: d }));
 
   return (
     <AppShell>
@@ -66,27 +204,32 @@ export function EligibilityPage() {
           title={t(language, "Check Your Scheme Eligibility")}
           description={t(language, "eligibility_page_desc")}
         />
-        <section className="rounded-lg border bg-card p-5 shadow-sm md:p-8">
+
+        <section className="rounded-2xl border bg-card p-5 shadow-sm md:p-8">
+          {/* Progress Header */}
           <div className="mb-8">
-            <div className="mb-3 flex justify-between text-xs font-bold">
-              <span>
+            <div className="mb-3 flex justify-between text-xs font-bold text-foreground">
+              <span className="inline-flex items-center gap-1.5">
+                <Sparkles className="size-3.5 text-primary" />
                 {t(language, "Step")} {step + 1} {t(language, "of")} 5
               </span>
-              <span>{t(language, stepsKeys[step] ?? "")}</span>
+              <span className="font-extrabold text-primary">
+                {t(language, stepsKeys[step] ?? "")}
+              </span>
             </div>
-            <Progress value={(step + 1) * 20} />
+            <Progress value={(step + 1) * 20} className="h-2" />
             <div className="mt-4 hidden justify-between md:flex">
               {stepsKeys.map((x, i) => (
                 <div key={x} className="flex w-1/5 flex-col items-center text-center">
                   <span
                     className={
                       (i <= step
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-primary text-primary-foreground shadow-sm"
                         : "bg-muted text-muted-foreground") +
-                      " grid size-8 place-items-center rounded-full text-xs font-bold"
+                      " grid size-8 place-items-center rounded-full text-xs font-bold transition-all"
                     }
                   >
-                    {i < step ? <Check /> : i + 1}
+                    {i < step ? <Check className="size-4" /> : i + 1}
                   </span>
                   <span className="mt-2 max-w-28 text-[11px] font-semibold text-muted-foreground">
                     {t(language, x)}
@@ -96,62 +239,258 @@ export function EligibilityPage() {
             </div>
           </div>
 
-          <h2 className="mb-5 text-xl font-bold">{t(language, stepsKeys[step] ?? "")}</h2>
+          {/* Step Header */}
+          <div className="mb-6 border-b pb-4">
+            <h2 className="text-xl font-bold flex items-center gap-2">
+              {step === 0 && <UserRound className="size-5 text-primary" />}
+              {step === 1 && <Sprout className="size-5 text-primary" />}
+              {step === 2 && <Layers className="size-5 text-primary" />}
+              {step === 3 && <FileCheck2 className="size-5 text-primary" />}
+              {t(language, stepsKeys[step] ?? "")}
+            </h2>
+            <p className="text-xs text-muted-foreground mt-1">
+              Select your options from the dropdowns below.
+            </p>
+          </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {fields[step]?.map(([key, label]) => (
-              <label key={key} className="text-sm font-semibold">
-                {t(language, label)}
-                <input
-                  value={String(form[key])}
-                  onChange={(e) => update(key, e.target.value)}
-                  className="mt-2 h-11 w-full rounded-md border bg-background px-3 font-normal outline-none focus:ring-2 focus:ring-ring"
+          {/* ================================================================= */}
+          {/* STEP 0: Personal Information */}
+          {/* ================================================================= */}
+          {step === 0 && (
+            <div className="grid gap-6 sm:grid-cols-2">
+              {/* Name */}
+              <div className="sm:col-span-2 space-y-1.5">
+                <label className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
+                  <User className="size-4 text-primary shrink-0" />
+                  {t(language, "Name")}
+                </label>
+                <div className="relative">
+                  <input
+                    value={String(form.name)}
+                    onChange={(e) => update("name", e.target.value)}
+                    placeholder="e.g. Ramesh Kumar"
+                    className="h-11 w-full rounded-xl border bg-background px-3.5 text-sm font-medium outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-sm"
+                  />
+                </div>
+              </div>
+
+              {/* Age Dropdown */}
+              <FarmerSelectField
+                label={t(language, "Age")}
+                value={form.age}
+                options={AGE_OPTIONS}
+                onChange={(v) => update("age", v)}
+                icon={Calendar}
+              />
+
+              {/* Gender Radio Buttons */}
+              <FarmerButtonCards
+                label={t(language, "Gender")}
+                value={form.gender || ""}
+                options={[
+                  { value: "Male", label: "Male" },
+                  { value: "Female", label: "Female" },
+                  { value: "Other", label: "Other" },
+                ]}
+                onChange={(v) => update("gender", v)}
+                icon={UserRound}
+              />
+
+              {/* State Dropdown */}
+              <FarmerSelectField
+                label={t(language, "State")}
+                value={form.state}
+                options={Object.keys(STATE_DISTRICTS).map((s) => ({ value: s, label: s }))}
+                onChange={(v) => update("state", v)}
+                icon={MapPin}
+              />
+
+              {/* District Dropdown (dynamically populated) */}
+              <FarmerSelectField
+                label={t(language, "District")}
+                value={form.district}
+                options={districtOptions}
+                onChange={(v) => update("district", v)}
+                icon={MapPin}
+              />
+            </div>
+          )}
+
+          {/* ================================================================= */}
+          {/* STEP 1: Farming Information */}
+          {/* ================================================================= */}
+          {step === 1 && (
+            <div className="grid gap-6 sm:grid-cols-2">
+              {/* Farmer Type Dropdown */}
+              <FarmerSelectField
+                label={t(language, "Farmer Type")}
+                value={form.farmerType}
+                options={FARMER_TYPE_OPTIONS}
+                onChange={(v) => update("farmerType", v)}
+                icon={UserRound}
+              />
+
+              {/* Crop Type Dropdown */}
+              <FarmerSelectField
+                label={t(language, "Crop Type")}
+                value={form.crop}
+                options={CROP_OPTIONS}
+                onChange={(v) => update("crop", v)}
+                icon={Sprout}
+              />
+
+              {/* Farming Experience Dropdown */}
+              <FarmerSelectField
+                label={t(language, "Farming Experience")}
+                value={form.experience}
+                options={EXPERIENCE_OPTIONS}
+                onChange={(v) => update("experience", v)}
+                icon={Calendar}
+              />
+
+              {/* Irrigation Type Dropdown */}
+              <FarmerSelectField
+                label={t(language, "Irrigation Type")}
+                value={form.irrigation}
+                options={IRRIGATION_OPTIONS}
+                onChange={(v) => update("irrigation", v)}
+                icon={Droplets}
+              />
+            </div>
+          )}
+
+          {/* ================================================================= */}
+          {/* STEP 2: Land Information */}
+          {/* ================================================================= */}
+          {step === 2 && (
+            <div className="grid gap-6 sm:grid-cols-2">
+              {/* Land Ownership */}
+              <div className="sm:col-span-2">
+                <FarmerSelectField
+                  label={t(language, "Land Ownership")}
+                  value={form.ownership}
+                  options={OWNERSHIP_OPTIONS}
+                  onChange={(v) => update("ownership", v)}
+                  icon={Landmark}
                 />
-              </label>
-            ))}
+              </div>
 
-            {step === 3 && (
-              <>
-                {(
-                  [
-                    ["aadhaar", "Aadhaar available"],
-                    ["bank", "Bank account available"],
-                    ["landDocument", "Land document available"],
-                  ] as const
-                ).map(([key, label]) => (
-                  <label
-                    key={key}
-                    className="flex items-center justify-between rounded-lg border bg-muted p-4 text-sm font-semibold"
-                  >
-                    {t(language, label)}
-                    <input
-                      type="checkbox"
-                      checked={Boolean(form[key as keyof FarmerProfile])}
-                      onChange={(e) => update(key as keyof FarmerProfile, e.target.checked)}
-                      className="size-5 accent-primary"
-                    />
-                  </label>
-                ))}
-                <label className="sm:col-span-2 text-sm font-semibold">
+              {/* Land Size */}
+              <FarmerSelectField
+                label={t(language, "Land Size")}
+                value={form.landSize}
+                options={LAND_SIZE_OPTIONS}
+                onChange={(v) => update("landSize", v)}
+                icon={Layers}
+              />
+
+              {/* Land Location */}
+              <FarmerSelectField
+                label={t(language, "Land Location")}
+                value={form.landLocation}
+                options={LAND_LOCATION_OPTIONS}
+                onChange={(v) => update("landLocation", v)}
+                icon={MapPin}
+              />
+            </div>
+          )}
+
+          {/* ================================================================= */}
+          {/* STEP 3: Income & Documents */}
+          {/* ================================================================= */}
+          {step === 3 && (
+            <div className="grid gap-6 sm:grid-cols-2">
+              {/* Annual Income */}
+              <div className="sm:col-span-2">
+                <FarmerSelectField
+                  label={t(language, "Annual Income")}
+                  value={form.income}
+                  options={INCOME_OPTIONS}
+                  onChange={(v) => update("income", v)}
+                  icon={IndianRupee}
+                />
+              </div>
+
+              {/* Document Availability Cards */}
+              <div className="sm:col-span-2 space-y-3 pt-2">
+                <p className="text-sm font-semibold text-foreground flex items-center gap-1.5">
+                  <BadgeCheck className="size-4 text-primary shrink-0" />
+                  Available Farmer Documents
+                </p>
+                <div className="grid sm:grid-cols-3 gap-3">
+                  {(
+                    [
+                      ["aadhaar", "Aadhaar Card", "Government UID document"],
+                      ["bank", "Bank Account", "Active DBT enabled account"],
+                      ["landDocument", "Land Patta / Passbook", "Ownership or tenancy proof"],
+                    ] as const
+                  ).map(([key, label, desc]) => {
+                    const isChecked = Boolean(form[key as keyof FarmerProfile]);
+                    return (
+                      <button
+                        key={key}
+                        type="button"
+                        onClick={() => update(key as keyof FarmerProfile, !isChecked)}
+                        className={`flex items-start gap-3 rounded-xl border p-3.5 text-left transition-all cursor-pointer ${
+                          isChecked
+                            ? "border-primary bg-primary/10 ring-1 ring-primary/30"
+                            : "border-border/70 bg-card hover:border-primary/40 opacity-75"
+                        }`}
+                      >
+                        <span
+                          className={`mt-0.5 grid size-5 shrink-0 place-items-center rounded-md border text-xs transition ${
+                            isChecked
+                              ? "border-primary bg-primary text-primary-foreground"
+                              : "border-muted-foreground/40 bg-background"
+                          }`}
+                        >
+                          {isChecked && <Check className="size-3.5 stroke-[3]" />}
+                        </span>
+                        <div>
+                          <p className="text-xs font-bold text-foreground">{t(language, label)}</p>
+                          <p className="text-[11px] text-muted-foreground mt-0.5">{desc}</p>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Required Certificates Dropdown */}
+              <div className="sm:col-span-2 space-y-1.5 pt-2">
+                <label className="flex items-center gap-1.5 text-sm font-semibold text-foreground">
+                  <FileText className="size-4 text-primary shrink-0" />
                   {t(language, "Required certificates")}
-                  <select className="mt-2 h-11 w-full rounded-md border bg-background px-3 font-normal">
+                </label>
+                <div className="relative">
+                  <select className="h-11 w-full appearance-none rounded-xl border bg-background px-3.5 pr-10 text-sm font-medium outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer shadow-sm">
                     <option>{t(language, "Income certificate available")}</option>
                     <option>{t(language, "Can arrange if required")}</option>
                     <option>{t(language, "Not available")}</option>
                   </select>
-                </label>
-              </>
-            )}
-          </div>
+                  <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 size-4 text-muted-foreground pointer-events-none" />
+                </div>
+              </div>
+            </div>
+          )}
 
-          <div className="mt-8 flex justify-between">
-            <Button variant="outline" disabled={step === 0} onClick={() => setStep((s) => s - 1)}>
-              <ArrowLeft />
+          {/* Navigation Buttons */}
+          <div className="mt-8 flex items-center justify-between border-t pt-5">
+            <Button
+              variant="outline"
+              disabled={step === 0}
+              onClick={() => setStep((s) => s - 1)}
+              className="gap-2 h-11 px-4 font-semibold"
+            >
+              <ArrowLeft className="size-4" />
               {t(language, "Back")}
             </Button>
-            <Button onClick={() => setStep((s) => s + 1)}>
+            <Button
+              onClick={() => setStep((s) => s + 1)}
+              className="gap-2 h-11 px-6 font-bold shadow-sm"
+            >
               {step === 3 ? t(language, "Analyze Eligibility") : t(language, "Continue")}
-              <ArrowRight />
+              <ArrowRight className="size-4" />
             </Button>
           </div>
         </section>
@@ -216,14 +555,14 @@ function Results({ restart }: { restart: () => void }) {
           title={t(language, "Eligibility Analysis Complete")}
           description={t(language, "eligibility_complete_desc")}
           actions={
-            <Button variant="outline" onClick={restart}>
-              <RotateCcw />
+            <Button variant="outline" onClick={restart} className="gap-2">
+              <RotateCcw className="size-4" />
               {t(language, "Start again")}
             </Button>
           }
         />
 
-        <section className="mb-6 rounded-lg bg-primary p-6 text-primary-foreground shadow-lg">
+        <section className="mb-6 rounded-2xl bg-primary p-6 text-primary-foreground shadow-lg">
           <div className="flex items-center gap-4">
             <span className="grid size-14 place-items-center rounded-full bg-primary-foreground/15">
               <ShieldCheck className="size-8" />
@@ -234,15 +573,15 @@ function Results({ restart }: { restart: () => void }) {
             </div>
           </div>
           <div className="mt-5 grid grid-cols-3 gap-2 text-center text-xs">
-            <div className="rounded-lg bg-primary-foreground/10 p-3">
+            <div className="rounded-xl bg-primary-foreground/10 p-3">
               <b className="block text-xl">1</b>
               {t(language, "Eligible")}
             </div>
-            <div className="rounded-lg bg-primary-foreground/10 p-3">
+            <div className="rounded-xl bg-primary-foreground/10 p-3">
               <b className="block text-xl">1</b>
               {t(language, "Potential")}
             </div>
-            <div className="rounded-lg bg-primary-foreground/10 p-3">
+            <div className="rounded-xl bg-primary-foreground/10 p-3">
               <b className="block text-xl">1</b>
               {t(language, "Not eligible")}
             </div>
@@ -253,10 +592,10 @@ function Results({ restart }: { restart: () => void }) {
           {results.map(({ s, status, reason, icon: Icon }) => {
             const locScheme = getLocalizedScheme(s, language);
             return (
-              <section key={s.id} className="rounded-lg border bg-card p-5 shadow-sm">
+              <section key={s.id} className="rounded-2xl border bg-card p-5 shadow-sm">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-lg bg-secondary text-primary">
-                    <Icon />
+                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-secondary text-primary">
+                    <Icon className="size-6" />
                   </span>
                   <div className="flex-1">
                     <div className="flex flex-wrap items-center gap-3">
@@ -267,27 +606,27 @@ function Results({ restart }: { restart: () => void }) {
                       <b className="text-foreground">{t(language, "Reason")}:</b> {reason}
                     </p>
                     <div className="mt-4 grid gap-3 text-sm md:grid-cols-3">
-                      <div className="rounded-lg bg-muted p-3">
-                        <b>{t(language, "Benefit")}</b>
+                      <div className="rounded-xl bg-muted p-3">
+                        <b className="text-foreground">{t(language, "Benefit")}</b>
                         <p className="mt-1 text-muted-foreground">{locScheme.benefit}</p>
                       </div>
-                      <div className="rounded-lg bg-muted p-3">
-                        <b>{t(language, "Documents")}</b>
+                      <div className="rounded-xl bg-muted p-3">
+                        <b className="text-foreground">{t(language, "Documents")}</b>
                         <p className="mt-1 text-muted-foreground">
                           {locScheme.documents.slice(0, 2).join(", ")}
                         </p>
                       </div>
-                      <div className="rounded-lg bg-muted p-3">
-                        <b>{t(language, "Next step")}</b>
+                      <div className="rounded-xl bg-muted p-3">
+                        <b className="text-foreground">{t(language, "Next step")}</b>
                         <p className="mt-1 text-muted-foreground">
                           {t(language, "Review details and official rules")}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <Button asChild variant="outline">
+                  <Button asChild variant="outline" className="gap-2">
                     <Link to="/schemes/$id" params={{ id: s.id }}>
-                      <FileText />
+                      <FileText className="size-4" />
                       {t(language, "View Scheme")}
                     </Link>
                   </Button>

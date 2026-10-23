@@ -1,7 +1,5 @@
 """
-=============================================================================
-Krishi Mitra AI Portal - Layer 3: LLM Integration (llm.py)
-=============================================================================
+
 
 This module connects Layer 2 (FAISS Vector Similarity Search) with Layer 3
 (Groq Large Language Model) to provide grounded, hallucination-free,
@@ -49,6 +47,31 @@ STANDARD_FALLBACK_MESSAGE = (
     "or District Agricultural Extension Officer for personalized guidance."
 )
 
+LANGUAGE_NAMES = {
+    "ta": "Tamil (தமிழ்)",
+    "te": "Telugu (తెలుగు)",
+    "en": "English",
+    "hi": "Hindi (हिन्दी)",
+}
+
+FALLBACK_MESSAGES = {
+    "ta": (
+        "மன்னிக்கவும், உங்கள் குறிப்பிட்ட கோரிக்கைக்குப் பொருந்தக்கூடிய அரசு விவசாயத் திட்டங்கள் "
+        "எங்கள் தரவுத்தளத்தில் கிடைக்கவில்லை. தனிப்பயனாக்கப்பட்ட வழிகாட்டுதலுக்கு உங்கள் அருகிலுள்ள "
+        "வேளாண் அலுவலகம் (Krishi Bhavan) அல்லது மாவட்ட விவசாய விரிவாக்க அதிகாரியை அணுகவும்."
+    ),
+    "te": (
+        "క్షమించండి, మీ అభ్యర్థనకు సరిపోయే ప్రభుత్వ వ్యవసాయ పథకాలు మా డేటాబేస్‌లో కనుగొనబడలేదు. "
+        "వ్యక్తిగత మార్గదర్శకత్వం కోసం దయచేసి మీ సమీప రైతు భరోసా కేంద్రం (RBK), కృషి భవన్ లేదా "
+        "వ్యవసాయ విస్తరణ అధికారిని సంప్రదించండి."
+    ),
+    "hi": (
+        "क्षमा करें, हमारे डेटाबेस में आपके अनुरोध से मेल खाने वाली प्रासंगिक सरकारी कृषि योजनाएं नहीं मिलीं। "
+        "व्यक्तिगत मार्गदर्शन के लिए कृपया अपने नजदीकी कृषि भवन या जिला कृषि विस्तार अधिकारी से संपर्क करें।"
+    ),
+    "en": STANDARD_FALLBACK_MESSAGE,
+}
+
 
 # ---------------------------------------------------------------------------
 # 2. Layer 3: Krishi Mitra LLM Generator Class
@@ -86,17 +109,27 @@ class KrishiMitraLLM:
         self.retriever = retriever if retriever is not None else SchemeRetriever()
         print("[*] Krishi Mitra LLM Layer 3 is fully initialized and ready!\n")
 
-    def build_prompt_messages(self, query: str, retrieved_schemes: List[Dict[str, Any]]) -> List[Dict[str, str]]:
+    def build_prompt_messages(
+        self,
+        query: str,
+        retrieved_schemes: List[Dict[str, Any]],
+        language: Optional[str] = None
+    ) -> List[Dict[str, str]]:
         """
-        Constructs a structured prompt with system guardrails and retrieved context.
+        Constructs a structured prompt with system guardrails, language instructions, and retrieved context.
 
         Args:
             query (str): The farmer's question.
             retrieved_schemes (list): Schemes retrieved from FAISS.
+            language (str, optional): Target language code ('ta', 'te', 'en', 'hi').
 
         Returns:
             list: List of message dictionaries formatted for Groq Chat Completion.
         """
+        lang_code = language.strip().lower() if language and language.strip() else "en"
+        target_lang = LANGUAGE_NAMES.get(lang_code, "English")
+        target_fallback = FALLBACK_MESSAGES.get(lang_code, STANDARD_FALLBACK_MESSAGE)
+
         # Format the retrieved schemes into clean text context
         if retrieved_schemes:
             context_blocks = []
@@ -108,7 +141,7 @@ class KrishiMitraLLM:
         else:
             schemes_context = "No relevant schemes found in the database."
 
-        # System message with strict anti-hallucination and formatting guardrails
+        # System message with strict anti-hallucination, language and formatting guardrails
         system_prompt = (
             "You are 'Krishi Mitra AI' (कृषि मित्र), an empathetic, polite, and knowledgeable "
             "agricultural assistant dedicated to helping Indian farmers understand and access government schemes.\n\n"
@@ -119,7 +152,7 @@ class KrishiMitraLLM:
             "2. ANTI-HALLUCINATION & FALLBACK RULE: If the provided context DOES NOT contain information "
             "relevant to answering the farmer's query, or if the user asks something completely unrelated to farming "
             "or the indexed schemes, you MUST politely respond with:\n"
-            f"   \"{STANDARD_FALLBACK_MESSAGE}\"\n"
+            f"   \"{target_fallback}\"\n"
             "3. FARMER-FRIENDLY TONE: Use clear, simple, respectful language without overly dense bureaucratic jargon.\n"
             "4. STRUCTURE YOUR RESPONSE clearly into readable sections:\n"
             "   - 🌾 **Overview & Best Matched Scheme(s)**\n"
@@ -130,26 +163,44 @@ class KrishiMitraLLM:
             "5. If multiple schemes match, briefly mention the alternative options so the farmer has complete choices."
         )
 
-        # User message containing both the retrieved context and farmer query
+        if lang_code != "en":
+            system_prompt += (
+                f"\n\n### 6. MANDATORY OUTPUT LANGUAGE:\n"
+                f"You MUST provide your response completely and fluently in {target_lang}. "
+                "Keep official government scheme names, key acronyms (e.g. PM-KISAN, PMFBY, KCC), and contact numbers "
+                "accurate and identifiable (you may include the official acronym in parentheses), while rendering "
+                f"all descriptions, benefits, eligibility, and steps fluently and respectfully in {target_lang}."
+            )
+
+        # User message containing both the retrieved context, query, and target language
         user_prompt = (
             f"AGRICULTURAL SCHEMES CONTEXT:\n"
             f"====================================================\n"
             f"{schemes_context}\n"
             f"====================================================\n\n"
-            f"FARMER QUESTION: \"{query}\"\n\n"
-            f"Please provide a helpful, structured, and accurate response based strictly on the context above."
+            f"FARMER QUESTION: \"{query}\"\n"
         )
+        if lang_code != "en":
+            user_prompt += f"TARGET LANGUAGE: {target_lang}\n"
+
+        user_prompt += f"\nPlease provide a helpful, structured, and accurate response based strictly on the context above."
 
         return [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ]
 
-    def ask(self, query: str, top_k: int = 3, temperature: float = 0.2) -> Dict[str, Any]:
+    def ask(
+        self,
+        query: str,
+        top_k: int = 3,
+        temperature: float = 0.2,
+        language: Optional[str] = None
+    ) -> Dict[str, Any]:
         """
         End-to-end RAG answering pipeline:
         1. Query -> FAISS Retrieval (Top K schemes)
-        2. Format context and prompt
+        2. Format context and prompt with language constraints
         3. Groq LLM Generation
         4. Return clean answer and metadata
 
@@ -157,15 +208,23 @@ class KrishiMitraLLM:
             query (str): The farmer's question.
             top_k (int): Number of schemes to retrieve from FAISS (default: 3).
             temperature (float): Sampling temperature (low value for deterministic, factual outputs).
+            language (str, optional): Target language code ('ta', 'te', 'en', 'hi').
 
         Returns:
             dict: Structured response with query, answer, retrieved schemes, and model used.
         """
         query_clean = query.strip() if query else ""
         if not query_clean:
+            lang_code = language.strip().lower() if language and language.strip() else "en"
+            empty_msg = {
+                "ta": "விவசாய திட்டங்கள் அல்லது விவசாய உதவி பற்றி ஒரு கேள்வியைக் கேளுங்கள்.",
+                "te": "దయచేసి వ్యవసాయ పథకాలు లేదా సహాయం గురించి ఒక ప్రశ్న అడగండి.",
+                "hi": "कृपया कृषि योजनाओं या सहायता के बारे में कोई प्रश्न पूछें।",
+                "en": "Please ask a question about agricultural schemes or farming assistance.",
+            }.get(lang_code, "Please ask a question about agricultural schemes or farming assistance.")
             return {
                 "query": query,
-                "answer": "Please ask a question about agricultural schemes or farming assistance.",
+                "answer": empty_msg,
                 "retrieved_schemes": [],
                 "model_used": self.model_name,
             }
@@ -173,8 +232,8 @@ class KrishiMitraLLM:
         # Step 1: Retrieve top matching schemes from FAISS
         retrieved_schemes = self.retriever.search(query_clean, top_k=top_k)
 
-        # Step 2: Build the prompt with strict context constraints
-        messages = self.build_prompt_messages(query_clean, retrieved_schemes)
+        # Step 2: Build the prompt with strict context constraints and language
+        messages = self.build_prompt_messages(query_clean, retrieved_schemes, language=language)
 
         # Step 3: Call Groq API with fallback model handling
         models_to_try = [self.model_name] + [m for m in FALLBACK_MODELS if m != self.model_name]

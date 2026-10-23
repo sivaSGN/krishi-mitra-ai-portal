@@ -124,22 +124,22 @@ export const schemes: Scheme[] = (rawSchemes as RawSchemeItem[]).map((raw, idx) 
 });
 
 export const defaultProfile: FarmerProfile = {
-  name: "Ramesh Kumar",
-  age: "46",
-  gender: "Male",
-  state: "Telangana",
-  district: "Warangal",
-  farmerType: "Small Farmer",
-  crop: "Paddy & Cotton",
-  experience: "18 years",
-  irrigation: "Borewell",
-  ownership: "Owned",
-  landSize: "3.5 acres",
-  landLocation: "Warangal Rural",
-  income: "₹1,80,000",
-  aadhaar: true,
-  bank: true,
-  landDocument: true,
+  name: "",
+  age: "",
+  gender: "",
+  state: "",
+  district: "",
+  farmerType: "",
+  crop: "",
+  experience: "",
+  irrigation: "",
+  ownership: "",
+  landSize: "",
+  landLocation: "",
+  income: "",
+  aadhaar: false,
+  bank: false,
+  landDocument: false,
 };
 
 export const defaultNotifications: AppNotification[] = [

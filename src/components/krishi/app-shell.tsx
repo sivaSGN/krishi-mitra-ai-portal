@@ -206,7 +206,13 @@ function SidebarContent() {
     </div>
   );
 }
-export function AppShell({ children }: { children: React.ReactNode }) {
+export function AppShell({
+  children,
+  hidePadding = false,
+}: {
+  children: React.ReactNode;
+  hidePadding?: boolean;
+}) {
   const { sidebarOpen, setSidebarOpen, notifications, profile, isAuthenticated, logout, language } = useApp();
   const navigate = useNavigate();
   const unread = notifications.filter((n) => !n.read).length;
@@ -353,7 +359,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <main
           id="main-content"
           tabIndex={-1}
-          className="outline-none page-enter min-h-[calc(100vh-4rem)] p-4 md:p-6 xl:p-8"
+          className={`outline-none page-enter ${
+            hidePadding ? "p-0 min-h-[calc(100vh-4rem)] overflow-hidden" : "min-h-[calc(100vh-4rem)] p-4 md:p-6 xl:p-8"
+          }`}
         >
           {children}
         </main>

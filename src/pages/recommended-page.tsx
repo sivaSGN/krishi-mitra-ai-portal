@@ -1,19 +1,64 @@
-import { BrainCircuit, CheckCircle2, Info } from "lucide-react";
+import { BrainCircuit, CheckCircle2, Sparkles, UserRound } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { AppShell, PageHeader } from "@/components/krishi/app-shell";
 import { SchemeCard } from "@/components/krishi/scheme-card";
+import { Button } from "@/components/ui/button";
 import { schemes } from "@/data/schemes";
 import { useApp, t } from "@/context/app-context";
 import { getLocalizedScheme } from "@/i18n/scheme-translations";
 
+function isProfileComplete(profile: {
+  name?: string;
+  state?: string;
+  district?: string;
+  income?: string;
+  farmerType?: string;
+  crop?: string;
+}): boolean {
+  return Boolean(
+    profile.name && profile.name !== "Farmer" && profile.name.trim() !== "" &&
+    profile.state && profile.state.trim() !== "" &&
+    profile.district && profile.district.trim() !== "" &&
+    profile.income && profile.income.trim() !== "" &&
+    profile.farmerType && profile.farmerType.trim() !== "" &&
+    profile.crop && profile.crop.trim() !== ""
+  );
+}
+
 export function RecommendedPage() {
-  const { language } = useApp();
+  const { language, profile } = useApp();
+  const profileComplete = isProfileComplete(profile);
+
+  if (!profileComplete) {
+    return (
+      <AppShell>
+        <div className="mx-auto max-w-3xl">
+          <PageHeader
+            title={t(language, "Recommended for You")}
+            description="Personalized government schemes matched to your profile"
+          />
+          <div className="rounded-2xl border-2 border-dashed border-muted-foreground/20 bg-card p-16 text-center">
+            <span className="mx-auto grid size-20 place-items-center rounded-full bg-amber-100 dark:bg-amber-950 text-amber-500 mb-5">
+              <Sparkles className="size-10" />
+            </span>
+            <h2 className="text-2xl font-bold">Profile Incomplete</h2>
+            <p className="mt-3 text-muted-foreground max-w-sm mx-auto">
+              To see personalized scheme recommendations matched to your situation, please complete your farmer profile first.
+            </p>
+            <Button asChild className="mt-6 gap-2">
+              <Link to="/profile">
+                <UserRound className="size-4" />
+                Complete Profile Details
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </AppShell>
+    );
+  }
+
   const recommendedList = [
-    schemes[0]!,
-    schemes[10]!,
-    schemes[3]!,
-    schemes[6]!,
-    schemes[1]!,
-    schemes[2]!,
+    schemes[0]!, schemes[10]!, schemes[3]!, schemes[6]!, schemes[1]!, schemes[2]!,
   ];
 
   return (
@@ -23,12 +68,6 @@ export function RecommendedPage() {
           title={t(language, "Recommended for You")}
           description={t(language, "recommended_desc")}
         />
-        <div className="mb-6 flex items-start gap-3 rounded-lg border border-info/25 bg-info/10 p-4 text-sm">
-          <Info className="mt-0.5 size-5 shrink-0 text-info" />
-          <p>
-            <b>{t(language, "Demo recommendations:")}</b> {t(language, "demo_rec_banner")}
-          </p>
-        </div>
         <div className="grid gap-5 xl:grid-cols-2">
           {recommendedList.map((raw) => {
             const s = getLocalizedScheme(raw, language);
@@ -49,10 +88,7 @@ export function RecommendedPage() {
                     {s.matchScore}%
                   </p>
                   <div className="mt-3 h-2 overflow-hidden rounded-full bg-muted">
-                    <div
-                      className="h-full rounded-full bg-primary"
-                      style={{ width: `${s.matchScore}%` }}
-                    />
+                    <div className="h-full rounded-full bg-primary" style={{ width: `${s.matchScore}%` }} />
                   </div>
                   <h4 className="mt-5 text-sm font-bold">{t(language, "Why recommended")}</h4>
                   <ul className="mt-2 space-y-2">
@@ -72,3 +108,4 @@ export function RecommendedPage() {
     </AppShell>
   );
 }
+

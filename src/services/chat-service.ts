@@ -15,6 +15,7 @@ const API_BASE_URL = (import.meta as any).env?.VITE_BACKEND_URL || "http://local
  */
 export interface ChatRequest {
   question: string;
+  language?: string;
 }
 
 /**
@@ -28,9 +29,10 @@ export interface ChatResponse {
  * Sends a farmer's question to the FastAPI backend and receives a grounded LLM response.
  * 
  * @param question - The query entered by the farmer
+ * @param language - Optional language code ('ta', 'te', 'en', 'hi')
  * @returns Promise resolving to the ChatResponse containing the generated answer
  */
-export async function sendFarmerQuestion(question: string): Promise<ChatResponse> {
+export async function sendFarmerQuestion(question: string, language?: string): Promise<ChatResponse> {
   const trimmedQuestion = question.trim();
   if (!trimmedQuestion) {
     throw new Error("Please enter a valid question.");
@@ -39,12 +41,17 @@ export async function sendFarmerQuestion(question: string): Promise<ChatResponse
   const endpoint = `${API_BASE_URL}/chat`;
 
   try {
+    const payload: ChatRequest = { question: trimmedQuestion };
+    if (language) {
+      payload.language = language;
+    }
+
     const response = await fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ question: trimmedQuestion }),
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {

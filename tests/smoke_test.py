@@ -23,7 +23,16 @@ async def go(page, path):
 
 async def navigation(page):
     await go(page, "/")
-    await page.wait_for_url("**/dashboard")
+    if "/login" in page.url:
+        demo_btn = page.get_by_role("button", name=re.compile("Ramesh Kumar|Sign In", re.I)).first
+        if await demo_btn.count():
+            await demo_btn.click()
+            await page.wait_for_url("**/dashboard")
+        else:
+            await page.get_by_role("button", name="Sign in with OTP").click()
+            await page.wait_for_url("**/dashboard")
+    else:
+        await page.wait_for_url("**/dashboard")
     nav = page.get_by_role("navigation", name="Main navigation")
     for label, path in [("Find Schemes", "/schemes"), ("Eligibility Checker", "/eligibility"),
                         ("Recommended for You", "/recommended"), ("Saved Schemes", "/saved"),

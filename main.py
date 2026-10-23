@@ -26,7 +26,7 @@ import logging
 from typing import Optional, List, Dict, Any
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, status, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -102,6 +102,8 @@ app.add_middleware(
 )
 
 
+import auth_db
+
 # ---------------------------------------------------------------------------
 # Pydantic Request & Response Schemas
 # ---------------------------------------------------------------------------
@@ -115,6 +117,10 @@ class ChatRequest(BaseModel):
         description="The farmer's question or topic of inquiry.",
         examples=["I want a scheme for paddy crop"]
     )
+    language: Optional[str] = Field(
+        default=None,
+        description="Optional preferred response language code ('ta', 'te', 'en', 'hi')."
+    )
 
 
 class ChatResponse(BaseModel):
@@ -125,6 +131,55 @@ class ChatResponse(BaseModel):
         ...,
         description="Farmer-friendly, grounded natural language answer."
     )
+
+
+class RegisterRequest(BaseModel):
+    name: str = Field(..., min_length=1, description="Farmer's full name")
+    age: int = Field(..., ge=18, le=120, description="Farmer's age")
+    state: str = Field(..., min_length=1, description="State")
+    district: str = Field(..., min_length=1, description="District")
+    preferred_language: str = Field("en", description="Preferred language code")
+    annual_income: str = Field(..., min_length=1, description="Annual income")
+    mobile: str = Field(..., min_length=10, max_length=15, description="10-digit mobile number")
+    password: str = Field(..., min_length=6, description="Account password (min 6 chars)")
+
+
+class LoginRequest(BaseModel):
+    mobile: str = Field(..., min_length=10, max_length=15, description="Registered mobile number")
+    password: str = Field(..., min_length=1, description="Account password")
+
+
+class AuthResponse(BaseModel):
+    success: bool
+    message: str
+    user: Optional[Dict[str, Any]] = None
+    session_token: Optional[str] = None
+
+
+class FarmerProfileRequest(BaseModel):
+    name: Optional[str] = "Farmer"
+    age: Optional[int] = 42
+    gender: Optional[str] = "Male"
+    state: Optional[str] = "Telangana"
+    district: Optional[str] = "Warangal"
+    farmer_type: Optional[str] = None
+    farmerType: Optional[str] = None
+    crop: Optional[str] = "Paddy & Cotton"
+    experience: Optional[str] = "15 years"
+    irrigation: Optional[str] = "Borewell"
+    ownership: Optional[str] = "Owned"
+    land_size: Optional[str] = None
+    landSize: Optional[str] = None
+    land_location: Optional[str] = None
+    landLocation: Optional[str] = None
+    income: Optional[str] = None
+    annual_income: Optional[str] = None
+    aadhaar: Optional[bool] = True
+    bank: Optional[bool] = True
+    land_document: Optional[bool] = None
+    landDocument: Optional[bool] = None
+    preferred_language: Optional[str] = "en"
+    language: Optional[str] = None
 
 
 # ---------------------------------------------------------------------------
@@ -193,10 +248,14 @@ async def chat_endpoint(payload: ChatRequest):
         )
 
     try:
-        logger.info(f"Received query: '{query_text}'")
+        logger.info(f"Received query: '{query_text}' (language: {payload.language})")
         
-        # Execute Layer 2 (FAISS) + Layer 3 (Groq LLM) pipeline
-        result = krishi_ai_engine.ask(query=query_text, top_k=3)
+        # Execute Layer 2 (FAISS) + Layer 3 (Groq LLM) pipeline with language preference
+        result = krishi_ai_engine.ask(
+            query=query_text,
+            top_k=3,
+            language=payload.language
+        )
         
         logger.info(f"Successfully generated answer for query: '{query_text}'")
         return ChatResponse(answer=result["answer"])
@@ -207,6 +266,132 @@ async def chat_endpoint(payload: ChatRequest):
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"An error occurred while generating the response: {str(e)}"
         )
+
+
+@app.post("/api/register", response_model=AuthResponse, tags=["Authentication"])
+async def register_endpoint(payload: RegisterRequest):
+    """
+    Registers a new farmer in the database with hashed password.
+    Enforces 10-digit unique mobile number.
+    """
+    import secrets
+    ok, message, user = auth_db.register_user(
+        name=payload.name,
+        age=payload.age,
+        state=payload.state,
+        district=payload.district,
+        preferred_language=payload.preferred_language,
+        annual_income=payload.annual_income,
+        mobile=payload.mobile,
+        password=payload.password,
+    )
+    if not ok:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=message)
+
+    session_token = secrets.token_hex(24)
+    return AuthResponse(
+        success=True,
+        message=message,
+        user=user,
+        session_token=session_token,
+    )
+
+
+@app.post("/api/login", response_model=AuthResponse, tags=["Authentication"])
+async def login_endpoint(payload: LoginRequest):
+    """
+    Authenticates farmer by mobile number and password against database.
+    """
+    import secrets
+    ok, message, user = auth_db.authenticate_user(
+        mobile=payload.mobile,
+        password=payload.password,
+    )
+    if not ok:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=message)
+
+    session_token = secrets.token_hex(24)
+    return AuthResponse(
+        success=True,
+        message=message,
+        user=user,
+        session_token=session_token,
+    )
+
+
+@app.get("/api/user/{mobile}", tags=["Authentication"])
+async def get_user_endpoint(mobile: str):
+    """
+    Retrieves user profile details by mobile number.
+    """
+    user = auth_db.get_user_by_mobile(mobile)
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    return {"success": True, "user": user}
+
+
+@app.post("/api/user/{mobile}/profile", tags=["Farmer Profile & Analytics"])
+@app.put("/api/user/{mobile}/profile", tags=["Farmer Profile & Analytics"])
+async def save_farmer_profile_endpoint(mobile: str, payload: FarmerProfileRequest):
+    """
+    Saves or updates complete details of a specific farmer in the database
+    for profile management and future agricultural analytics.
+    """
+    ok, message, updated_profile = auth_db.save_or_update_farmer_profile(
+        mobile=mobile,
+        profile_data=payload.model_dump(exclude_unset=True),
+    )
+    if not ok:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=message)
+    return {
+        "success": True,
+        "message": message,
+        "profile": updated_profile,
+    }
+
+
+@app.get("/api/user/{mobile}/profile", tags=["Farmer Profile & Analytics"])
+async def get_farmer_profile_endpoint(mobile: str):
+    """
+    Retrieves all details stored in the database for a specific farmer.
+    """
+    profile = auth_db.get_farmer_profile_by_mobile(mobile)
+    if not profile:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Farmer profile not found")
+    return {
+        "success": True,
+        "profile": profile,
+    }
+
+
+@app.get("/api/analytics/farmers", tags=["Farmer Profile & Analytics"])
+async def get_all_farmers_analytics_endpoint():
+    """
+    Retrieves all farmer profile records stored in the database for future analysis,
+    statistical aggregations, crop patterns, and agricultural policy intelligence.
+    """
+    farmers = auth_db.get_all_farmer_profiles_for_analysis()
+    return {
+        "success": True,
+        "count": len(farmers),
+        "farmers": farmers,
+    }
+
+
+@app.get("/api/analytics/export.csv", tags=["Farmer Profile & Analytics"])
+async def export_farmers_csv_endpoint():
+    """
+    Exports all farmer profile details as a downloadable CSV dataset for offline analysis
+    in Excel, Pandas, or BI platforms.
+    """
+    csv_content = auth_db.export_farmers_to_csv()
+    return Response(
+        content=csv_content,
+        media_type="text/csv",
+        headers={
+            "Content-Disposition": "attachment; filename=farmer_profiles_dataset.csv"
+        }
+    )
 
 
 # ---------------------------------------------------------------------------
